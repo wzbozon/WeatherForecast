@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  Weather.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 26/02/2023.
