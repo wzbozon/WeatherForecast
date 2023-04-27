@@ -39,8 +39,10 @@ struct WeatherView: View {
 
                 Spacer()
 
-                WeatherFooterView()
-                    .unredacted()
+                WeatherFooterView(onButtonTap: {
+                    viewModel.showCityListView()
+                })
+                .unredacted()
             }
             .redacted(reason: viewModel.isLoading ? .placeholder : [])
         }
@@ -55,6 +57,18 @@ struct WeatherView: View {
                 viewModel.fetchWeather()
             }
         )
+        .fullScreenCover(isPresented: $viewModel.isShowingCityListView) {
+            CityListView()
+                .environmentObject(viewModel.cityStore)
+        }
+    }
+
+    var cityListButton: some View {
+        Button {
+            viewModel.showCityListView()
+        } label: {
+            Text("Cities")
+        }
     }
 }
 

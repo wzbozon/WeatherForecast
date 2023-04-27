@@ -8,17 +8,31 @@
 import SwiftUI
 
 struct WeatherFooterView: View {
-    var body: some View {
-        VStack {
-            Text("Powered by")
-                .foregroundColor(.white)
-                .font(.footnote)
+    var onButtonTap: (() -> Void)?
 
-            Text("Open-Meteo")
-                .foregroundColor(.white)
-                .font(.footnote)
-                .fontWeight(.bold)
+    var body: some View {
+        HStack {
+            VStack {
+                Text("Powered by")
+                    .foregroundColor(.white)
+                    .font(.footnote)
+
+                Text("Open-Meteo")
+                    .foregroundColor(.white)
+                    .font(.footnote)
+                    .fontWeight(.bold)
+            }
+
+            Spacer()
+
+            Button {
+                onButtonTap?()
+            } label: {
+                Image(systemName: "list.bullet")
+                    .foregroundColor(.white)
+            }
         }
+        .padding(.horizontal)
     }
 }
 
@@ -27,7 +41,7 @@ struct WeatherFooterView_Previews: PreviewProvider {
         ZStack(alignment: .bottom) {
             WeatherBackgroundView()
 
-            WeatherFooterView()
+            WeatherFooterView(onButtonTap: nil)
         }
     }
 }

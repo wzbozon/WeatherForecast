@@ -13,33 +13,40 @@ final class WeatherViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isShowingError = false
     @Published var errorMessage: String?
-
+    @Published var isShowingCityListView = false
+    
     var cityNameText: String = "Dubai"
     
     var dateText: String {
         let date = Date()
         return DateFormatter.todayFormatter.string(from: date)
     }
-
+    
     let currentWeatherViewModel: CurrentWeatherViewModel
     let dailyWeatherViewModel: DailyWeatherViewModel
-
+    let cityStore: CityStore
+    
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
-
+    
     init(weatherService: WeatherService) {
         self.weatherService = weatherService
-
+        
         currentWeatherViewModel = CurrentWeatherViewModel(weatherService: weatherService)
         dailyWeatherViewModel = DailyWeatherViewModel(weatherService: weatherService)
+        cityStore = CityStore()
         
         setupSubscriptions()
     }
-
+    
     func fetchWeather() {
         Task {
             try? await weatherService.getWeather()
         }
+    }
+    
+    func showCityListView() {
+        isShowingCityListView = true
     }
 }
 
@@ -62,7 +69,7 @@ private extension WeatherViewModel {
                 }
             }
             .store(in: &disposeBag)
-
+        
         weatherService.$weatherLoadingState
             .map { state in
                 if case .loading = state { return true }
