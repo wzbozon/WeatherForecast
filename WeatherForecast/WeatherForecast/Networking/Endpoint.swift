@@ -23,7 +23,7 @@ protocol Endpoint {
 extension Endpoint {
     // Default HTTP headers
     var header: [String: String]? {
-        var output =
+        let output =
         [
             "Content-Type": "application/json",
             "Accept": "*/*"
@@ -43,7 +43,7 @@ extension Endpoint {
         return URL(string: urlString)
     }
 
-    /// Default server is TakeClass server
+    /// Default server is Open-Meteo server
     /// On server depends how we parse a response and create a URL
     var server: Server {
         return .openmeteo(ServerEnvironment.current.url)

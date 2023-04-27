@@ -17,8 +17,12 @@ struct WeatherCode {
     var icon: String {
         switch code {
         case 0:
+            return "sun.max.fill"
+        case 1:
             return "sun.max"
-        case 1, 2, 3:
+        case 2:
+            return "sun.min"
+        case 3:
             return "cloud"
         case 45, 48:
             return "cloud.fog"

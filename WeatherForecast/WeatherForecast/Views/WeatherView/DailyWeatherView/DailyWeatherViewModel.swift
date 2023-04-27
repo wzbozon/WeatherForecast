@@ -13,8 +13,8 @@ final class DailyWeatherViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isShowingError = false
     @Published var errorMessage: String?
-    @Published var weather: Weather?
     @Published var dayWeatherList: [DayWeather]
+    @Published private var weather: Weather?
 
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
@@ -24,7 +24,13 @@ final class DailyWeatherViewModel: ObservableObject {
 
         dayWeatherList = []
         for _ in 0 ..< 6 {
-            let dayWeather = DayWeather(day: "------", temperatureHigh: "---", temperatureLow: "---", icon: "sun.max")
+            let dayWeather = DayWeather(
+                day: "------",
+                temperatureHigh: "---",
+                temperatureLow: "---",
+                icon: "sun.max"
+            )
+
             dayWeatherList.append(dayWeather)
         }
 
@@ -58,13 +64,13 @@ private extension DailyWeatherViewModel {
         $weather
             .sink { [unowned self] weather in
                 if let weather = weather {
-                    didFetchWeather(weather)
+                    update(with: weather)
                 }
             }
             .store(in: &disposeBag)
     }
 
-    func didFetchWeather(_ weather: Weather) {
+    func update(with weather: Weather) {
         let daily = weather.daily
 
         var temp: [DayWeather] = []

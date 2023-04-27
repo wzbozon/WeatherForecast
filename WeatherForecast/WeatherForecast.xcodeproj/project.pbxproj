@@ -190,6 +190,7 @@
 		9215FADC29B4462300B86A2A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC8EEF9929F56616006F35E0 /* WeatherService */,
 				FCAA817229AB5B50000E9860 /* Weather.swift */,
 				FC8EEF9329F51374006F35E0 /* WeatherCode.swift */,
 				FC8EEF7B29F42988006F35E0 /* Model.swift */,
@@ -228,9 +229,6 @@
 				FC8EEF6B29F4225A006F35E0 /* APIResponseError.swift */,
 				FC8EEF6529F4217F006F35E0 /* ServerEnvironment.swift */,
 				FC8EEF6329F42126006F35E0 /* Endpoint.swift */,
-				FC8EEF7329F423B7006F35E0 /* WeatherService.swift */,
-				FC8EEF7929F42597006F35E0 /* WeatherServiceStore.swift */,
-				FC8EEF7529F423CB006F35E0 /* WeatherServiceEndpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -252,6 +250,16 @@
 				FC8EEF9129F506E0006F35E0 /* DayWeather.swift */,
 			);
 			path = DailyWeatherView;
+			sourceTree = "<group>";
+		};
+		FC8EEF9929F56616006F35E0 /* WeatherService */ = {
+			isa = PBXGroup;
+			children = (
+				FC8EEF7329F423B7006F35E0 /* WeatherService.swift */,
+				FC8EEF7929F42597006F35E0 /* WeatherServiceStore.swift */,
+				FC8EEF7529F423CB006F35E0 /* WeatherServiceEndpoint.swift */,
+			);
+			path = WeatherService;
 			sourceTree = "<group>";
 		};
 		FCAA813629AB5B3F000E9860 = {

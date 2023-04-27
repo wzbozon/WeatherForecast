@@ -10,7 +10,6 @@ import Foundation
 
 @MainActor
 final class CurrentWeatherViewModel: ObservableObject {
-    @Published var weather: Weather?
     @Published var time: String = "--"
     @Published var summary: String = "Data Unavailable"
     @Published var icon: String = "sun.max"
@@ -18,6 +17,7 @@ final class CurrentWeatherViewModel: ObservableObject {
     @Published var windSpeed: String = "--"
     @Published var humidity: String = "--"
     @Published var apparentTemperature: String = "--"
+    @Published private var weather: Weather?
 
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()

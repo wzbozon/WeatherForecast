@@ -27,8 +27,9 @@ enum WeatherServiceEndpoint: Endpoint {
     var parameters: [String: Any]? {
         switch self {
         case .getForecast:
+            let numberOfDays = 5 as Double
             let startDate = Date()
-            let endDate = Date().addingTimeInterval(5 * Date.secondsInDay)
+            let endDate = Date().addingTimeInterval(numberOfDays * Date.secondsInDay)
 
             return [
                 "latitude": 25.09,

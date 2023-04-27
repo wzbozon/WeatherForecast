@@ -21,33 +21,43 @@ struct DailyWeatherView: View {
 
                 Spacer()
             }
-            .padding(.leading)
             .foregroundColor(.gray)
 
             Divider()
-                .padding([.leading, .trailing])
+                .overlay(Color.gray)
 
             ForEach(viewModel.dayWeatherList, id: \.self) { dayWeather in
                 ZStack {
                     HStack {
                         Text(dayWeather.day)
+                            .frame(width: Constants.textWidth, alignment: .leading)
+
+                        Image(systemName: dayWeather.icon)
+
                         Spacer()
-                        Text(dayWeather.temperatureHigh).padding(8)
+
+                        Text(dayWeather.temperatureHigh).padding(Padding.small)
+
                         Text(dayWeather.temperatureLow)
                     }
-                    .padding([.leading, .trailing])
                     .foregroundColor(.white)
-
-                    Image(systemName: dayWeather.icon)
-                        .foregroundColor(.white)
                 }
             }
         }
+        .padding(.horizontal)
+    }
+
+    private enum Constants {
+        static let textWidth: CGFloat = 150
     }
 }
 
 struct DailyWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyWeatherView(viewModel: DailyWeatherViewModel(weatherService: .init()))
+        DailyWeatherView(
+            viewModel: DailyWeatherViewModel(
+                weatherService: .init()
+            )
+        )
     }
 }
