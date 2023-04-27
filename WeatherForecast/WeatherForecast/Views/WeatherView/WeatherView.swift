@@ -36,6 +36,7 @@ struct WeatherView: View {
 
                 WeatherFooterView()
             }
+            .redacted(reason: viewModel.isLoading ? .placeholder : [])
         }
         .onAppear {
             viewModel.fetchWeather()

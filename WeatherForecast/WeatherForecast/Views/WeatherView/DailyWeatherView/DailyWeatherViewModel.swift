@@ -14,13 +14,19 @@ final class DailyWeatherViewModel: ObservableObject {
     @Published var isShowingError = false
     @Published var errorMessage: String?
     @Published var weather: Weather?
-    @Published var dayWeatherList: [DayWeather] = []
+    @Published var dayWeatherList: [DayWeather]
 
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
 
     init(weatherService: WeatherService) {
         self.weatherService = weatherService
+
+        dayWeatherList = []
+        for _ in 0 ..< 6 {
+            let dayWeather = DayWeather(day: "------", temperatureHigh: "---", temperatureLow: "---", icon: "sun.max")
+            dayWeatherList.append(dayWeather)
+        }
 
         setupSubscriptions()
     }

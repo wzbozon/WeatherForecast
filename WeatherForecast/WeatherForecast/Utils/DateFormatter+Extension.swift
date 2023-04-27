@@ -22,7 +22,7 @@ extension DateFormatter {
 
     static let todayFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, dd MMMM"
+        formatter.dateFormat = "EEEE, MMMM dd"
         return formatter
     }()
 }
