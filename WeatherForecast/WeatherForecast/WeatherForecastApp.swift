@@ -10,8 +10,7 @@ import SwiftUI
 @main
 struct WeatherForecastApp: App {
     @StateObject private var model = Model()
-
-    let persistenceController = PersistenceController.shared
+    @StateObject private var cityStore = CityStore()
 
     var body: some Scene {
         WindowGroup {
@@ -21,6 +20,7 @@ struct WeatherForecastApp: App {
                 )
             )
             .environmentObject(model)
+            .environment(\.managedObjectContext, cityStore.container.viewContext)
         }
     }
 }

@@ -6,19 +6,20 @@
 //
 
 import Combine
+import CoreData
 import SwiftUI
 
 class City: ObservableObject {
-    let id: String
-    let name: String
-    let longitude: Double
-    let latitude: Double
+    var id: UUID
+    var name: String
+    var longitude: Double
+    var latitude: Double
 
     @Published var image: UIImage?
     @Published var weather: Weather?
 
     init() {
-        id = UUID().uuidString
+        id = UUID()
         name = "Dubai"
         longitude = 55.14
         latitude = 25.09
@@ -27,7 +28,7 @@ class City: ObservableObject {
     }
 
     init(cityData data: CityValidation.CityData) {
-        id = UUID().uuidString
+        id = UUID()
         name = data.name
         longitude = data.geometry.location.longitude
         latitude = data.geometry.location.latitude
