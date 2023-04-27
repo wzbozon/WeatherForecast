@@ -9,6 +9,7 @@ import Combine
 import SwiftUI
 
 class City: ObservableObject {
+    let id: String
     let name: String
     let longitude: Double
     let latitude: Double
@@ -17,6 +18,7 @@ class City: ObservableObject {
     @Published var weather: Weather?
 
     init() {
+        id = UUID().uuidString
         name = "Dubai"
         longitude = 55.14
         latitude = 25.09
@@ -25,6 +27,7 @@ class City: ObservableObject {
     }
 
     init(cityData data: CityValidation.CityData) {
+        id = UUID().uuidString
         name = data.name
         longitude = data.geometry.location.longitude
         latitude = data.geometry.location.latitude

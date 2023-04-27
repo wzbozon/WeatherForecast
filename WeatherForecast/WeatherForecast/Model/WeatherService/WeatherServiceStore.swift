@@ -9,13 +9,13 @@ import Foundation
 import OSLog
 
 protocol WeatherServiceStoreProtocol {
-    func getWeather() async throws -> Weather
+    func getWeather(city: City) async throws -> Weather
 }
 
 actor WeatherServiceStore: WeatherServiceStoreProtocol {
-    func getWeather() async throws -> Weather {
+    func getWeather(city: City) async throws -> Weather {
         let (data, response) = try await APIManager.shared.sendRequest(
-            endpoint: WeatherServiceEndpoint.getForecast
+            endpoint: WeatherServiceEndpoint.getForecast(city: city)
         )
 
         let decoder = JSONDecoder()

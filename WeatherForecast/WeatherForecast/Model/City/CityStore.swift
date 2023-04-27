@@ -10,4 +10,10 @@ import SwiftUI
 
 class CityStore: ObservableObject {
     @Published var cities: [City] = [City()]
+    @Published var selectedCity: City?
+
+    func saveSelectedCity(_ city: City) {
+        selectedCity = city
+        UserDefaults.selectedCityID = city.id
+    }
 }

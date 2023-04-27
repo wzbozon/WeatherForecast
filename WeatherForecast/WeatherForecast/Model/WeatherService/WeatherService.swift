@@ -26,11 +26,11 @@ class WeatherService: ObservableObject {
     }
 
     @MainActor
-    func getWeather() async throws {
+    func getWeather(city: City) async throws {
         weatherLoadingState = .loading
 
         do {
-            let weather = try await store.getWeather()
+            let weather = try await store.getWeather(city: city)
             weatherLoadingState = .loaded(weather)
         } catch {
             weatherLoadingState = .failed(error)

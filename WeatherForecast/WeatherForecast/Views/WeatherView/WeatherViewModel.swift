@@ -14,8 +14,7 @@ final class WeatherViewModel: ObservableObject {
     @Published var isShowingError = false
     @Published var errorMessage: String?
     @Published var isShowingCityListView = false
-    
-    var cityNameText: String = "Dubai"
+    @Published var cityNameText: String = "Dubai"
     
     var dateText: String {
         let date = Date()
@@ -39,9 +38,10 @@ final class WeatherViewModel: ObservableObject {
         setupSubscriptions()
     }
     
-    func fetchWeather() {
+    func fetchWeather(city: City? = nil) {
         Task {
-            try? await weatherService.getWeather()
+            let city = city ?? cityStore.cities[0]
+            try? await weatherService.getWeather(city: city)
         }
     }
     
@@ -76,6 +76,14 @@ private extension WeatherViewModel {
                 return false
             }
             .assign(to: \.isLoading, on: self)
+            .store(in: &disposeBag)
+
+        cityStore.$selectedCity
+            .sink { [unowned self] city in
+                guard let city else { return }
+                cityNameText = city.name
+                fetchWeather(city: city)
+            }
             .store(in: &disposeBag)
     }
 }

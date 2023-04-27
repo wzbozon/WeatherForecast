@@ -8,7 +8,7 @@
 import Foundation
 
 enum WeatherServiceEndpoint: Endpoint {
-    case getForecast
+    case getForecast(city: City)
 
     var path: String {
         switch self {
@@ -26,14 +26,14 @@ enum WeatherServiceEndpoint: Endpoint {
 
     var parameters: [String: Any]? {
         switch self {
-        case .getForecast:
+        case .getForecast(let city):
             let numberOfDays = 5 as Double
             let startDate = Date()
             let endDate = Date().addingTimeInterval(numberOfDays * Date.secondsInDay)
 
             return [
-                "latitude": 25.09,
-                "longitude": 55.14,
+                "latitude": city.latitude,
+                "longitude": city.longitude,
                 "hourly": "temperature_2m,relativehumidity_2m,apparent_temperature",
                 "daily": "weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max",
                 "current_weather": true,

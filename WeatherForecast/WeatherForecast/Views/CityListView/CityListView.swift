@@ -61,7 +61,7 @@ struct CityListView : View {
     }
 
     private func selectCity(_ city: City) {
-        // TODO: save selected city
+        cityStore.saveSelectedCity(city)
         presentationMode.wrappedValue.dismiss()
     }
 }
