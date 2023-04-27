@@ -13,12 +13,10 @@
 //  https://api.open-meteo.com/v1/forecast?latitude=25.09&longitude=55.14&hourly=temperature_2m,relativehumidity_2m,apparent_temperature&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max&current_weather=true&windspeed_unit=ms&timezone=auto&start_date=2023-02-26&end_date=2023-03-04
 //
 //  https://app.quicktype.io
-//
-// https://open-meteo.com/en/docs#latitude=25.09&longitude=55.14&hourly=temperature_2m,relativehumidity_2m,apparent_temperature&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max&current_weather=true&windspeed_unit=ms&timezone=auto&start_date=2023-02-26&end_date=2023-03-04
 
 import Foundation
 
-// MARK: - Weather
+// MARK: - Welcome
 
 struct Weather: Codable {
     let latitude, longitude, generationtimeMS: Double
@@ -50,8 +48,14 @@ struct Weather: Codable {
 
 struct CurrentWeather: Codable {
     let temperature, windspeed: Double
-    let winddirection, weathercode: Int
+    let winddirection, weathercode, isDay: Int
     let time: String
+
+    enum CodingKeys: String, CodingKey {
+        case temperature, windspeed, winddirection, weathercode
+        case isDay = "is_day"
+        case time
+    }
 }
 
 // MARK: - Daily
