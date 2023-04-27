@@ -46,26 +46,26 @@ private extension CurrentWeatherViewModel {
         $weather
             .sink { [unowned self] weather in
                 if let weather = weather {
-                    didFetchWeather(weather)
+                    update(with: weather)
                 }
             }
             .store(in: &disposeBag)
     }
 
-    func didFetchWeather(_ weather: Weather) {
-        self.time = weather.currentWeather.time
-
-        self.summary = weather.currentWeather.weatherCode.description
-
-        self.icon = weather.currentWeather.weatherCode.icon
+    func update(with weather: Weather) {
+        time = weather.currentWeather.time
+        summary = weather.currentWeather.weatherCode.description
+        icon = weather.currentWeather.weatherCode.icon
 
         let roundedTemperature = Int(weather.currentWeather.temperature)
-        self.temperature = "\(roundedTemperature)º"
+        temperature = "\(roundedTemperature)º"
 
         let roundedWindSpeed = Int(weather.currentWeather.windspeed)
-        self.windSpeed = "\(roundedWindSpeed) m/s"
+        windSpeed = "\(roundedWindSpeed) m/s"
 
         let index = 0 // TODO: find index of current hour by converting current hour to "2023-04-27T06:00" format
-        self.humidity = "\(weather.hourly.relativehumidity2M[index]) %"
+        humidity = "\(weather.hourly.relativehumidity2M[index]) %"
+
+        // TODO: add apparent temperature
     }
 }
