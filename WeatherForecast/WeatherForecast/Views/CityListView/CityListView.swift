@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CityListView : View {
-    @ObservedObject var viewModel = CityListViewModel()
+    @StateObject private var viewModel = CityListViewModel()
     @Environment(\.presentationMode) var presentationMode
-    @State var isPresentingModal: Bool = false
-    @State private var isEditing: Bool = false
+    @State private var isShowingNewCityView = false
+    @State private var isEditing = false
 
     var body: some View {
         NavigationView {
@@ -35,12 +35,12 @@ struct CityListView : View {
 
     private var addButton: some View {
         Button(action: {
-            self.isPresentingModal = true
+            self.isShowingNewCityView = true
         }) {
             Image(systemName: "plus.circle.fill")
                 .font(.title)
-        }.sheet(isPresented: $isPresentingModal) {
-            NewCityView(isPresented: $isPresentingModal)
+        }.sheet(isPresented: $isShowingNewCityView) {
+            NewCityView()
         }
     }
 }

@@ -8,29 +8,21 @@
 import SwiftUI
 
 struct NewCityView : View {
-    @ObservedObject var viewModel = NewCityViewModel()
-    @Binding private var isPresented: Bool
-
-    @State private var search: String = ""
-    @ObservedObject private var completer: CityCompletion = CityCompletion()
-    
-    @Environment(\.presentationMode) var presentationMode
-
-    init(isPresented: Binding<Bool>) {
-        _isPresented = isPresented
-    }
+    @StateObject private var viewModel = NewCityViewModel()
+    @Environment(\.presentationMode) private var presentationMode
+    @State private var cityName = ""
 
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    TextField("Search City", text: $search) {
-                        self.completer.search(self.search)
+                    TextField("Search City", text: $cityName) {
+                        self.viewModel.search(self.cityName)
                     }
                 }
                 
                 Section {
-                    ForEach(completer.predictions) { prediction in
+                    ForEach(viewModel.predictions) { prediction in
                         Button(action: {
                             self.viewModel.addCity(from: prediction)
                             self.presentationMode.wrappedValue.dismiss()
@@ -59,6 +51,6 @@ struct NewCityView : View {
 
 struct NewCityView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCityView(isPresented: .constant(true))
+        NewCityView()
     }
 }
