@@ -20,7 +20,7 @@ struct CityListView : View {
                         CityRow(city: city)
                             .onTapGesture {
                                 viewModel.selectCity(city)
-                                self.presentationMode.wrappedValue.dismiss()
+                                presentationMode.wrappedValue.dismiss()
                             }
                     }
                     .onDelete(perform: viewModel.delete)

@@ -24,8 +24,8 @@ struct NewCityView : View {
                 Section {
                     ForEach(viewModel.predictions) { prediction in
                         Button(action: {
-                            self.viewModel.addCity(from: prediction)
-                            self.presentationMode.wrappedValue.dismiss()
+                            viewModel.addCity(from: prediction)
+                            presentationMode.wrappedValue.dismiss()
                         }) {
                             Text(prediction.description)
                                 .foregroundColor(.primary)
@@ -42,7 +42,7 @@ struct NewCityView : View {
     
     private var cancelButton: some View {
         Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
+            presentationMode.wrappedValue.dismiss()
         }) {
             Text("Cancel")
         }
