@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  ServiceProvider.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 22/04/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Model: ObservableObject {
+class ServiceProvider: ObservableObject {
     let weatherService: WeatherService
 
     init() {

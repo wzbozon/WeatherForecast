@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct NewCityView : View {
+    @ObservedObject var viewModel = NewCityViewModel()
+    @Binding private var isPresented: Bool
+
     @State private var search: String = ""
-    @State private var isValidating: Bool = false
     @ObservedObject private var completer: CityCompletion = CityCompletion()
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var cityStore: CityStore
-    
+
+    init(isPresented: Binding<Bool>) {
+        _isPresented = isPresented
+    }
+
     var body: some View {
         NavigationView {
             List {
@@ -27,7 +32,7 @@ struct NewCityView : View {
                 Section {
                     ForEach(completer.predictions) { prediction in
                         Button(action: {
-                            self.addCity(from: prediction)
+                            self.viewModel.addCity(from: prediction)
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             Text(prediction.description)
@@ -36,7 +41,7 @@ struct NewCityView : View {
                     }
                 }
             }
-            .disabled(isValidating)
+            .disabled(viewModel.isValidating)
             .navigationBarTitle(Text("Add City"))
             .navigationBarItems(leading: cancelButton)
             .listStyle(GroupedListStyle())
@@ -50,28 +55,10 @@ struct NewCityView : View {
             Text("Cancel")
         }
     }
-    
-    private func addCity(from prediction: CityCompletion.Prediction) {
-        isValidating = true
-        
-        CityValidation.validateCity(withID: prediction.id) { cityData in
-            if let cityData {
-                DispatchQueue.main.async {
-                    let city = City.create(with: cityData)
-                    self.cityStore.saveCity(city)
-                    self.presentationMode.wrappedValue.dismiss()
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.isValidating = false
-            }
-        }
-    }
 }
 
 struct NewCityView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCityView()
+        NewCityView(isPresented: .constant(true))
     }
 }

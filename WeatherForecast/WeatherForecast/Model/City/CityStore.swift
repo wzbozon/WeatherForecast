@@ -5,50 +5,75 @@
 //  Created by Denis Kutlubaev on 23/04/2023.
 //
 
-import Combine
+import Foundation
 import CoreData
-import SwiftUI
 
 class CityStore: ObservableObject {
+    static let shared = CityStore()
+
     @Published var cities: [City] = []
     @Published var selectedCity: City?
 
     init() {
-        let viewContext = PersistenceController.shared.container.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
+        fetchCities()
+    }
 
+    func fetchCities() {
+        let request = NSFetchRequest<City>(entityName: "City")
         do {
-            cities = try viewContext.fetch(request) as? [City] ?? []
-            if cities.count == 0 {
-                let newCity = City(context: viewContext)
-                newCity.id = UUID()
-                newCity.timestamp = Date()
-                newCity.name = "Dubai"
-                newCity.longitude = 55.14
-                newCity.latitude = 25.09
-
-                try viewContext.save()
-                cities = [newCity]
+            cities = try viewContext.fetch(request)
+            if cities.isEmpty {
+                try addDefaultCity()
             }
         } catch {
-            print("Failed")
+            print("DEBUG: Some error occured while fetching")
         }
     }
 
-    func saveCity(_ city: City) {
-        let viewContext = PersistenceController.shared.container.viewContext
+    func addCity(name: String, longitude: Double, latitude: Double) {
+        let city = City(context: viewContext)
+        city.id = UUID()
+        city.timestamp = Date()
+        city.name = name
+        city.longitude = longitude
+        city.latitude = latitude
+
+        save()
+        fetchCities()
+    }
+
+    func addCity(cityData: CityValidation.CityData) {
+        let city = City(context: viewContext)
+        city.id = UUID()
+        city.timestamp = Date()
+        city.name = cityData.name
+        city.longitude = cityData.geometry.location.longitude
+        city.latitude = cityData.geometry.location.latitude
+
+        save()
+        fetchCities()
+    }
+
+    func save() {
         do {
             try viewContext.save()
-            cities.append(city)
         } catch {
-            print("Failed")
+            print("Error saving")
         }
     }
 
-    func saveSelectedCity(_ city: City) {
+    func selectCity(_ city: City) {
         selectedCity = city
         UserDefaults.selectedCityID = city.id?.uuidString
     }
 
-    let container = NSPersistentContainer(name: "CoreDataModel")
+    private let viewContext = PersistenceController.shared.viewContext
+}
+
+// MARK: - Private
+
+private extension CityStore {
+    func addDefaultCity() throws {
+        addCity(name: "Dubai", longitude: 55.14, latitude: 25.09)
+    }
 }

@@ -15,7 +15,7 @@ final class WeatherViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isShowingCityListView = false
     @Published var cityNameText: String = "Dubai"
-    
+
     var dateText: String {
         let date = Date()
         return DateFormatter.todayFormatter.string(from: date)
@@ -28,18 +28,17 @@ final class WeatherViewModel: ObservableObject {
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
     
-    init(weatherService: WeatherService) {
+    init(weatherService: WeatherService = .shared, cityStore: CityStore = .shared) {
         self.weatherService = weatherService
+        self.cityStore = cityStore
         
         currentWeatherViewModel = CurrentWeatherViewModel(weatherService: weatherService)
         dailyWeatherViewModel = DailyWeatherViewModel(weatherService: weatherService)
-        cityStore = CityStore()
         
         setupSubscriptions()
     }
     
     func fetchWeather(city: City? = nil) {
-        guard cityStore.cities.count > 0 else { return }
         Task {
             let city = city ?? cityStore.cities[0]
             try? await weatherService.getWeather(city: city)

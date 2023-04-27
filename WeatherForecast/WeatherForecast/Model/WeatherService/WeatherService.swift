@@ -10,6 +10,8 @@ import Foundation
 import OSLog
 
 class WeatherService: ObservableObject {
+    static let shared = WeatherService()
+    
     @Published var weatherLoadingState: LoadingState<Weather> = .loading
 
     private let store: WeatherServiceStoreProtocol
