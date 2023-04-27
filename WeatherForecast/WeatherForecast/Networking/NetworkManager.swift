@@ -9,7 +9,12 @@ import UIKit
 
 class NetworkManager: NSObject {
     struct Key {
-        static let googleMaps: String = "AIzaSyDKh5A4q4USR-a5iqeQs3uXfcaRHpo-LEI" // Enter your google maps API key here
+        static var googleMaps: String {
+            let googlePlacesAPIKey = Bundle.main.object(
+                forInfoDictionaryKey: "GooglePlacesAPIKey"
+            ) as? String
+            return googlePlacesAPIKey ?? ""
+        }
     }
 
     struct APIURL {
