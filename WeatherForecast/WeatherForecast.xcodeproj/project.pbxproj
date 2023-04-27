@@ -66,7 +66,6 @@
 		FCAA814329AB5B3F000E9860 /* WeatherForecastApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA814229AB5B3F000E9860 /* WeatherForecastApp.swift */; };
 		FCAA814729AB5B40000E9860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCAA814629AB5B40000E9860 /* Assets.xcassets */; };
 		FCAA814A29AB5B40000E9860 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCAA814929AB5B40000E9860 /* Preview Assets.xcassets */; };
-		FCAA814F29AB5B40000E9860 /* WeatherForecast.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCAA814D29AB5B40000E9860 /* WeatherForecast.xcdatamodeld */; };
 		FCAA815A29AB5B41000E9860 /* WeatherForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA815929AB5B41000E9860 /* WeatherForecastTests.swift */; };
 		FCAA816429AB5B41000E9860 /* WeatherForecastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA816329AB5B41000E9860 /* WeatherForecastUITests.swift */; };
 		FCAA816629AB5B41000E9860 /* WeatherForecastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA816529AB5B41000E9860 /* WeatherForecastUITestsLaunchTests.swift */; };
@@ -152,7 +151,6 @@
 		FCAA814229AB5B3F000E9860 /* WeatherForecastApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastApp.swift; sourceTree = "<group>"; };
 		FCAA814629AB5B40000E9860 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCAA814929AB5B40000E9860 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FCAA814E29AB5B40000E9860 /* WeatherForecast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherForecast.xcdatamodel; sourceTree = "<group>"; };
 		FCAA815029AB5B40000E9860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCAA815529AB5B41000E9860 /* WeatherForecastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherForecastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCAA815929AB5B41000E9860 /* WeatherForecastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastTests.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				FCAA814629AB5B40000E9860 /* Assets.xcassets */,
 				9215FAE329B447AB00B86A2A /* Colors.xcassets */,
 				FCAA815029AB5B40000E9860 /* Info.plist */,
-				FCAA814D29AB5B40000E9860 /* WeatherForecast.xcdatamodeld */,
 				FCAA814829AB5B40000E9860 /* Preview Content */,
 				FC86C38029FA482400B48A57 /* Config.xcconfig */,
 			);
@@ -599,7 +596,6 @@
 				FC8EEF8E29F5035A006F35E0 /* CurrentWeatherViewModel.swift in Sources */,
 				FC8EEF6229F42078006F35E0 /* APIManager.swift in Sources */,
 				FC6E686E29EE746C00E2C839 /* WeatherBackgroundView.swift in Sources */,
-				FCAA814F29AB5B40000E9860 /* WeatherForecast.xcdatamodeld in Sources */,
 				FC8EEFB729F58743006F35E0 /* Navigate.swift in Sources */,
 				FC8EEF9429F51374006F35E0 /* WeatherCode.swift in Sources */,
 				FC8EEF6029F42039006F35E0 /* API.swift in Sources */,
@@ -1007,16 +1003,6 @@
 			);
 			currentVersion = FC8EF1E929F6E0CD006F35E0 /* Model.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		FCAA814D29AB5B40000E9860 /* WeatherForecast.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FCAA814E29AB5B40000E9860 /* WeatherForecast.xcdatamodel */,
-			);
-			currentVersion = FCAA814E29AB5B40000E9860 /* WeatherForecast.xcdatamodel */;
-			path = WeatherForecast.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
