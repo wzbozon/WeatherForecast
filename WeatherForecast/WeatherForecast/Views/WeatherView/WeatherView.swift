@@ -23,6 +23,7 @@ struct WeatherView: View {
                     cityNameText: viewModel.cityNameText,
                     dateText: viewModel.dateText
                 )
+                .unredacted()
 
                 Spacer()
 
@@ -35,6 +36,7 @@ struct WeatherView: View {
                 Spacer()
 
                 WeatherFooterView()
+                    .unredacted()
             }
             .redacted(reason: viewModel.isLoading ? .placeholder : [])
         }
