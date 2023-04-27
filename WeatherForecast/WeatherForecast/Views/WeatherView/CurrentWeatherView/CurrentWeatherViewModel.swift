@@ -16,6 +16,7 @@ final class CurrentWeatherViewModel: ObservableObject {
     @Published var icon: String = "sun.max"
     @Published var temperature: String = "--"
     @Published var windSpeed: String = "--"
+    @Published var humidity: String = "--"
 
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
@@ -63,5 +64,7 @@ private extension CurrentWeatherViewModel {
 
         let roundedWindSpeed = Int(weather.currentWeather.windspeed)
         self.windSpeed = "\(roundedWindSpeed) m/s"
+
+        self.humidity = "\(weather.hourly.relativehumidity2M[0]) %"
     }
 }
