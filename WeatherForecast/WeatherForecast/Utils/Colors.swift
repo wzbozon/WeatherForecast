@@ -7,6 +7,6 @@
 import SwiftUI
 
 extension Color {
-    static let appBlue = Color("blue")
-    static let appDarkBlue = Color("dark-blue")
+    static let gradient1 = Color("gradient1")
+    static let gradient2 = Color("gradient2")
 }

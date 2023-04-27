@@ -1,7 +1,6 @@
 //
 //  TemplateRouter.swift
 //  
-//
 //  Created by Denis Kutlubaev on 01.03.2023.
 //
 
