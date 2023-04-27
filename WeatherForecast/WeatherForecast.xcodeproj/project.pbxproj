@@ -88,14 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9215FAD729B443F000B86A2A /* Modules */ = {
+		9215FAD729B443F000B86A2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9215FADA29B4442D00B86A2A /* TemperatureView */,
 				9215FAD929B4442300B86A2A /* CityListView */,
 				9215FAD829B4440900B86A2A /* CityView */,
 			);
-			path = Modules;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9215FAD829B4440900B86A2A /* CityView */ = {
@@ -174,7 +174,7 @@
 		FCAA814129AB5B3F000E9860 /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
-				9215FAD729B443F000B86A2A /* Modules */,
+				9215FAD729B443F000B86A2A /* Views */,
 				9215FADC29B4462300B86A2A /* Model */,
 				9215FADB29B445FA00B86A2A /* Resources */,
 				9215FAE529B447EB00B86A2A /* Utils */,
