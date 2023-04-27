@@ -65,6 +65,7 @@ private extension CurrentWeatherViewModel {
         let roundedWindSpeed = Int(weather.currentWeather.windspeed)
         self.windSpeed = "\(roundedWindSpeed) m/s"
 
-        self.humidity = "\(weather.hourly.relativehumidity2M[0]) %"
+        let index = 0 // TODO: find index of current hour by converting current hour to "2023-04-27T06:00" format
+        self.humidity = "\(weather.hourly.relativehumidity2M[index]) %"
     }
 }

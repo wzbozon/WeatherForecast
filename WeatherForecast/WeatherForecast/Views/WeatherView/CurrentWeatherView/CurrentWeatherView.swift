@@ -35,18 +35,16 @@ struct CurrentWeatherView: View {
 
                 Spacer()
 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 1) {
                     HStack {
                         Text("WIND SPEED")
                         Text(viewModel.windSpeed)
                     }
-                    .padding(.bottom, 1)
 
                     HStack {
                         Text("HUMIDITY")
                         Text(viewModel.humidity)
                     }
-                    .padding(.bottom, 1)
                 }
                 .font(.caption)
             }
