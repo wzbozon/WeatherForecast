@@ -8,7 +8,7 @@
 import UIKit
 
 class CityValidation: NSObject {
-    class func validateCity(withID placeID: String, _ completion: @escaping (_ city: City?) -> Void) {
+    class func validateCity(withID placeID: String, _ completion: @escaping (_ cityData: CityValidation.CityData?) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityData(for: placeID)) else {
             completion(nil)
             return
@@ -23,7 +23,7 @@ class CityValidation: NSObject {
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(CityValidation.Result.self, from: data)
-                completion(City(cityData: result.cityData))
+                completion(result.cityData)
             } catch {
                 print(error.localizedDescription)
                 completion(nil)

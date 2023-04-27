@@ -12,7 +12,7 @@ struct CityRow : View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
-            Text(city.name)
+            Text(city.name ?? "")
                 .lineLimit(nil)
                 .font(.title)
         }
@@ -22,15 +22,15 @@ struct CityRow : View {
 
 struct CityRow_Previews: PreviewProvider {
     static var previews: some View {
-        CityRow(
-            city: City(
-                cityData: CityValidation.CityData(
-                    name: "Dubai",
-                    geometry: CityValidation.CityData.Geometry(
-                        location: CityValidation.CityData.Geometry.Location(longitude: 55.14, latitude: 25.09)
-                    )
-                )
-            )
-        )
+        let viewContext = PersistenceController.preview.container.viewContext
+
+        let newCity = City(context: viewContext)
+        newCity.id = UUID()
+        newCity.timestamp = Date()
+        newCity.name = "Dubai"
+        newCity.longitude = 55.14
+        newCity.latitude = 25.09
+
+        return CityRow(city: newCity)
     }
 }

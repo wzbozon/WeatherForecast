@@ -39,6 +39,7 @@ final class WeatherViewModel: ObservableObject {
     }
     
     func fetchWeather(city: City? = nil) {
+        guard cityStore.cities.count > 0 else { return }
         Task {
             let city = city ?? cityStore.cities[0]
             try? await weatherService.getWeather(city: city)
@@ -81,7 +82,7 @@ private extension WeatherViewModel {
         cityStore.$selectedCity
             .sink { [unowned self] city in
                 guard let city else { return }
-                cityNameText = city.name
+                cityNameText = city.name ?? ""
                 fetchWeather(city: city)
             }
             .store(in: &disposeBag)

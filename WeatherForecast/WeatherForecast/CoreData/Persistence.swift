@@ -2,7 +2,7 @@
 //  Persistence.swift
 //  WeatherForecast
 //
-//  Created by Denis Kutlubaev on 26/02/2023.
+//  Created by Denis Kutlubaev on 25/04/2023.
 //
 
 import CoreData
@@ -13,10 +13,13 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
+
+        let newCity = City(context: viewContext)
+        newCity.timestamp = Date()
+        newCity.name = "Dubai"
+        newCity.longitude = 55.14
+        newCity.latitude = 25.09
+
         do {
             try viewContext.save()
         } catch {
@@ -31,7 +34,7 @@ struct PersistenceController {
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "WeatherForecast")
+        container = NSPersistentCloudKitContainer(name: "CoreDataModel")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

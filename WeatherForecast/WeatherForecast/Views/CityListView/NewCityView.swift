@@ -54,10 +54,11 @@ struct NewCityView : View {
     private func addCity(from prediction: CityCompletion.Prediction) {
         isValidating = true
         
-        CityValidation.validateCity(withID: prediction.id) { (city) in
-            if let city = city {
+        CityValidation.validateCity(withID: prediction.id) { cityData in
+            if let cityData {
                 DispatchQueue.main.async {
-                    self.cityStore.cities.append(city)
+                    let city = City.create(with: cityData)
+                    self.cityStore.saveCity(city)
                     self.presentationMode.wrappedValue.dismiss()
                 }
             }
