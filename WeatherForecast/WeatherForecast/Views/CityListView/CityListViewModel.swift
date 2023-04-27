@@ -19,7 +19,7 @@ class CityListViewModel: ObservableObject {
 
     func delete(at offsets: IndexSet) {
         for index in offsets {
-            cityStore.cities.remove(at: index)
+            cityStore.deleteCity(cityStore.cities[index])
         }
     }
 

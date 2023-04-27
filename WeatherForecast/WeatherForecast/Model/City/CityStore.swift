@@ -54,6 +54,12 @@ class CityStore: ObservableObject {
         fetchCities()
     }
 
+    func deleteCity(_ city: City) {
+        viewContext.delete(city)
+
+        fetchCities()
+    }
+
     func save() {
         do {
             try viewContext.save()
