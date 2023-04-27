@@ -23,17 +23,6 @@ class CityListViewModel: ObservableObject {
         }
     }
 
-    func move(from source: IndexSet, to destination: Int) {
-        var removeCities: [City] = []
-
-        for index in source {
-            removeCities.append(cityStore.cities[index])
-            cityStore.cities.remove(at: index)
-        }
-
-        cityStore.cities.insert(contentsOf: removeCities, at: destination)
-    }
-
     func selectCity(_ city: City) {
         cityStore.selectCity(city)
     }

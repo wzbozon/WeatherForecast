@@ -11,7 +11,6 @@ struct CityListView : View {
     @StateObject private var viewModel = CityListViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var isShowingNewCityView = false
-    @State private var isEditing = false
 
     var body: some View {
         NavigationView {
@@ -25,7 +24,6 @@ struct CityListView : View {
                             }
                     }
                     .onDelete(perform: viewModel.delete)
-                    .onMove(perform: viewModel.move)
                 }
             }
             .navigationBarItems(leading: EditButton(), trailing: addButton)
