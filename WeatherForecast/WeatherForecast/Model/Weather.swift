@@ -51,6 +51,10 @@ struct CurrentWeather: Codable {
     let winddirection, weathercode, isDay: Int
     let time: String
 
+    var weatherCode: WeatherCode {
+        WeatherCode(code: weathercode)
+    }
+
     enum CodingKeys: String, CodingKey {
         case temperature, windspeed, winddirection, weathercode
         case isDay = "is_day"
@@ -67,6 +71,10 @@ struct Daily: Codable {
     let sunrise, sunset: [String]
     let uvIndexMax, uvIndexClearSkyMax: [Double]
 
+    func weatherCode(at index: Int) -> WeatherCode {
+        WeatherCode(code: weathercode[index])
+    }
+
     enum CodingKeys: String, CodingKey {
         case time, weathercode
         case temperature2MMax = "temperature_2m_max"
@@ -76,6 +84,18 @@ struct Daily: Codable {
         case sunrise, sunset
         case uvIndexMax = "uv_index_max"
         case uvIndexClearSkyMax = "uv_index_clear_sky_max"
+    }
+}
+
+// MARK: - Hashable
+
+extension Daily: Hashable {
+    static func == (lhs: Daily, rhs: Daily) -> Bool {
+        lhs.time == rhs.time
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(time)
     }
 }
 

@@ -22,11 +22,11 @@ enum RequestError: Error {
             let errorMessage = error?.errors.map { $0.compactMap { $0.message } }
             return errorMessage?.reduce("", { $0 + "\n" + $1 }) ?? "Error with request"
         case .noResponse:
-            return NSLocalizedString("error.no.response", comment: "")
+            return "No response"
         case .decodingError(let error):
-            return NSLocalizedString("error.decoding", comment: "") + ": \n" + error.message
+            return "Decoding error" + ": \n" + error.message
         default:
-            return NSLocalizedString("error.unhandled", comment: "")
+            return "Unhandled error"
         }
     }
 

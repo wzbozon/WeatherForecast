@@ -18,7 +18,7 @@ struct AlertView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CornerRadius.small)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .layoutPriority(-1)
 
             VStack(spacing: 0) {

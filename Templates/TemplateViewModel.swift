@@ -49,7 +49,7 @@ private extension TemplateViewModel {
                     if let error = error as? RequestError {
                         errorMessage = error.message
                     } else {
-                        errorMessage = NSLocalizedString("error.unhandled", comment: "")
+                        errorMessage = "Unhandled error"
                     }
                 default:
                     break

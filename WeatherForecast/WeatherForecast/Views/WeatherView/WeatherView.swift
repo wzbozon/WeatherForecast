@@ -26,7 +26,11 @@ struct WeatherView: View {
 
                 Spacer()
 
-                WeatherCurrentView(viewModel: viewModel)
+                CurrentWeatherView(viewModel: viewModel.currentWeatherViewModel)
+
+                Spacer()
+
+                DailyWeatherView(viewModel: viewModel.dailyWeatherViewModel)
 
                 Spacer()
 

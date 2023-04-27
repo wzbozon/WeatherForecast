@@ -27,6 +27,9 @@ enum WeatherServiceEndpoint: Endpoint {
     var parameters: [String: Any]? {
         switch self {
         case .getForecast:
+            let startDate = Date()
+            let endDate = Date().addingTimeInterval(5 * Date.secondsInDay)
+
             return [
                 "latitude": 25.09,
                 "longitude": 55.14,
@@ -35,8 +38,8 @@ enum WeatherServiceEndpoint: Endpoint {
                 "current_weather": true,
                 "windspeed_unit": "ms",
                 "timezone": "auto",
-                "start_date": "2023-02-26",
-                "end_date": "2023-03-04"
+                "start_date": DateFormatter.serverFormatter.string(from: startDate),
+                "end_date": DateFormatter.serverFormatter.string(from: endDate)
             ]
         }
     }

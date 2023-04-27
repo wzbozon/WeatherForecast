@@ -18,10 +18,10 @@ struct ErrorPopup: ViewModifier {
         content
             .popup(isPresented: $isPresented, content: {
                 AlertView(
-                    title: "error.title",
+                    title: "Error",
                     message: errorMessage,
-                    cancelButtonTitle: "error.cancel.button.title",
-                    mainButtonTitle: "error.retry.button.title",
+                    cancelButtonTitle: "Cancel",
+                    mainButtonTitle: "Retry",
                     onCancel: {
                         isPresented = false
                         onCancel?()

@@ -18,12 +18,13 @@ actor WeatherServiceStore: WeatherServiceStoreProtocol {
             endpoint: WeatherServiceEndpoint.getForecast
         )
 
+        let decoder = JSONDecoder()
+
         if let response = response as? HTTPURLResponse,
            response.statusCode != Constants.positiveResponseCode {
             throw RequestError.statusNotOk
         }
 
-        let decoder = JSONDecoder()
         do {
             let weather = try decoder.decode(Weather.self, from: data)
             return weather
