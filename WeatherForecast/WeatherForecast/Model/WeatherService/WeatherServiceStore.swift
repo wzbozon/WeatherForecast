@@ -14,6 +14,10 @@ protocol WeatherServiceStoreProtocol {
 
 actor WeatherServiceStore: WeatherServiceStoreProtocol {
     func getWeather(city: City) async throws -> Weather {
+        if let weather = cache[city] {
+            return weather
+        }
+
         let (data, response) = try await APIManager.shared.sendRequest(
             endpoint: WeatherServiceEndpoint.getForecast(city: city)
         )
@@ -27,6 +31,7 @@ actor WeatherServiceStore: WeatherServiceStoreProtocol {
 
         do {
             let weather = try decoder.decode(Weather.self, from: data)
+            cache[city] = weather
             return weather
         } catch let error as DecodingError {
             Logger.default.info("[WeatherServiceStore] Decoding error: \(error.message, privacy: .public)")
@@ -40,4 +45,6 @@ actor WeatherServiceStore: WeatherServiceStoreProtocol {
     private enum Constants {
         static let positiveResponseCode = 200
     }
+
+    private var cache: [City: Weather] = [:]
 }
