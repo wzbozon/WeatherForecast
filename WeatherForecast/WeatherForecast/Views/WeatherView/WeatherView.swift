@@ -33,11 +33,22 @@ struct WeatherView: View {
                 WeatherFooterView()
             }
         }
+        .onAppear {
+            viewModel.fetchWeather()
+        }
+        .errorPopup(
+            isPresented: $viewModel.isShowingError,
+            errorMessage: viewModel.errorMessage,
+            onCancel: nil,
+            onAction: {
+                viewModel.fetchWeather()
+            }
+        )
     }
 }
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherView(viewModel: WeatherViewModel())
+        WeatherView(viewModel: WeatherViewModel(weatherService: .init()))
     }
 }

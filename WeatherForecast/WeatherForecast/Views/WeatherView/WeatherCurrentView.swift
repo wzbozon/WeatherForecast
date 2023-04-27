@@ -74,7 +74,7 @@ struct WeatherCurrentView_Previews: PreviewProvider {
         ZStack {
             WeatherBackgroundView()
 
-            WeatherCurrentView(viewModel: WeatherViewModel())
+            WeatherCurrentView(viewModel: WeatherViewModel(weatherService: .init()))
         }
     }
 }
