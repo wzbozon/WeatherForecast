@@ -19,7 +19,7 @@ final class DailyWeatherViewModel: ObservableObject {
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
 
-    init(weatherService: WeatherService) {
+    init(weatherService: WeatherService = .shared) {
         self.weatherService = weatherService
 
         dayWeatherList = []

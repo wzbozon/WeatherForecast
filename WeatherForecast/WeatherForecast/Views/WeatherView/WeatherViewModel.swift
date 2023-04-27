@@ -20,21 +20,11 @@ final class WeatherViewModel: ObservableObject {
         let date = Date()
         return DateFormatter.todayFormatter.string(from: date)
     }
-    
-    let currentWeatherViewModel: CurrentWeatherViewModel
-    let dailyWeatherViewModel: DailyWeatherViewModel
-    let cityStore: CityStore
-    
-    private let weatherService: WeatherService
-    private var disposeBag = Set<AnyCancellable>()
-    
+
     init(weatherService: WeatherService = .shared, cityStore: CityStore = .shared) {
         self.weatherService = weatherService
         self.cityStore = cityStore
-        
-        currentWeatherViewModel = CurrentWeatherViewModel(weatherService: weatherService)
-        dailyWeatherViewModel = DailyWeatherViewModel(weatherService: weatherService)
-        
+
         setupSubscriptions()
     }
     
@@ -48,6 +38,10 @@ final class WeatherViewModel: ObservableObject {
     func showCityListView() {
         isShowingCityListView = true
     }
+
+    private var disposeBag = Set<AnyCancellable>()
+    private let cityStore: CityStore
+    private let weatherService: WeatherService
 }
 
 // MARK: - Private

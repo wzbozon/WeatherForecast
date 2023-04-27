@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
-    @StateObject private var viewModel: CurrentWeatherViewModel
-
-    init(viewModel: CurrentWeatherViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @StateObject private var viewModel = CurrentWeatherViewModel()
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -64,7 +60,7 @@ struct CurrentWeatherView_Previews: PreviewProvider {
         ZStack {
             WeatherBackgroundView()
 
-            CurrentWeatherView(viewModel: .init(weatherService: .init()))
+            CurrentWeatherView()
         }
     }
 }

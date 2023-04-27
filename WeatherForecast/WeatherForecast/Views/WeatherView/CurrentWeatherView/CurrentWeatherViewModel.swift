@@ -19,14 +19,14 @@ final class CurrentWeatherViewModel: ObservableObject {
     @Published var apparentTemperature: String = "--"
     @Published private var weather: Weather?
 
-    private let weatherService: WeatherService
-    private var disposeBag = Set<AnyCancellable>()
-
-    init(weatherService: WeatherService) {
+    init(weatherService: WeatherService = .shared) {
         self.weatherService = weatherService
 
         setupSubscriptions()
     }
+
+    private var disposeBag = Set<AnyCancellable>()
+    private let weatherService: WeatherService
 }
 
 // MARK: - Private

@@ -23,15 +23,11 @@ struct WeatherView: View {
 
                 Spacer()
 
-                CurrentWeatherView(
-                    viewModel: viewModel.currentWeatherViewModel
-                )
+                CurrentWeatherView()
 
                 Spacer()
 
-                DailyWeatherView(
-                    viewModel: viewModel.dailyWeatherViewModel
-                )
+                DailyWeatherView()
 
                 Spacer()
 
@@ -55,7 +51,6 @@ struct WeatherView: View {
         )
         .fullScreenCover(isPresented: $viewModel.isShowingCityListView) {
             CityListView()
-                .environmentObject(viewModel.cityStore)
         }
     }
 

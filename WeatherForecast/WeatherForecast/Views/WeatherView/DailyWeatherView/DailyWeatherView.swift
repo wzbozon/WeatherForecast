@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct DailyWeatherView: View {
-    @StateObject private var viewModel: DailyWeatherViewModel
-
-    init(viewModel: DailyWeatherViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @StateObject private var viewModel = DailyWeatherViewModel()
 
     var body: some View {
         VStack {
@@ -54,10 +50,6 @@ struct DailyWeatherView: View {
 
 struct DailyWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyWeatherView(
-            viewModel: DailyWeatherViewModel(
-                weatherService: .init()
-            )
-        )
+        DailyWeatherView()
     }
 }
