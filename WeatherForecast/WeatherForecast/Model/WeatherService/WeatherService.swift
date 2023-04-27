@@ -12,7 +12,7 @@ import OSLog
 class WeatherService: ObservableObject {
     static let shared = WeatherService()
     
-    @Published var weatherLoadingState: LoadingState<Weather> = .loading
+    @Published var weatherLoadingStates: [City: LoadingState<Weather>] = [:]
 
     private let store: WeatherServiceStoreProtocol
     private var disposeBag = Set<AnyCancellable>()
@@ -29,14 +29,14 @@ class WeatherService: ObservableObject {
 
     @MainActor
     func getWeather(city: City) async throws {
-        weatherLoadingState = .loading
+        weatherLoadingStates[city] = .loading
 
         do {
             let weather = try await store.getWeather(city: city)
-            weatherLoadingState = .loaded(weather)
+            weatherLoadingStates[city] = .loaded(weather)
         } catch {
-            weatherLoadingState = .failed(error)
-            weatherLoadingState = .idle
+            weatherLoadingStates[city] = .failed(error)
+            weatherLoadingStates[city] = .idle
         }
     }
 }

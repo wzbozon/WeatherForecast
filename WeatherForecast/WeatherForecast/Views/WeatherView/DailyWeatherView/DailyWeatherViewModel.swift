@@ -7,34 +7,38 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 @MainActor
 final class DailyWeatherViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isShowingError = false
     @Published var errorMessage: String?
-    @Published var dayWeatherList: [DayWeather]
+    @Published var dayWeatherList: [DayWeather] = []
     @Published private var weather: Weather?
 
-    private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
 
-    init(weatherService: WeatherService = .shared) {
-        self.weatherService = weatherService
-
-        dayWeatherList = []
-        for _ in 0 ..< 6 {
-            let dayWeather = DayWeather(
-                day: "------",
-                temperatureHigh: "---",
-                temperatureLow: "---",
-                icon: "sun.max"
-            )
-
-            dayWeatherList.append(dayWeather)
-        }
+    init(weather: Binding<Weather?>) {
+        self.weather = weather.wrappedValue
 
         setupSubscriptions()
+
+        if let weather = self.weather {
+            update(with: weather)
+        } else {
+            dayWeatherList = []
+            for _ in 0 ..< 6 {
+                let dayWeather = DayWeather(
+                    day: "------",
+                    temperatureHigh: "---",
+                    temperatureLow: "---",
+                    icon: "sun.max"
+                )
+
+                dayWeatherList.append(dayWeather)
+            }
+        }
     }
 }
 
@@ -42,25 +46,6 @@ final class DailyWeatherViewModel: ObservableObject {
 
 private extension DailyWeatherViewModel {
     func setupSubscriptions() {
-        weatherService.$weatherLoadingState
-            .sink { [unowned self] state in
-                switch state {
-                case .loaded(let weather):
-                    self.weather = weather
-                default:
-                    break
-                }
-            }
-            .store(in: &disposeBag)
-
-        weatherService.$weatherLoadingState
-            .map { state in
-                if case .loading = state { return true }
-                return false
-            }
-            .assign(to: \.isLoading, on: self)
-            .store(in: &disposeBag)
-
         $weather
             .sink { [unowned self] weather in
                 if let weather = weather {

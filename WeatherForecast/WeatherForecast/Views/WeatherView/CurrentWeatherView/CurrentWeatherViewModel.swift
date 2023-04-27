@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 @MainActor
 final class CurrentWeatherViewModel: ObservableObject {
@@ -17,33 +18,21 @@ final class CurrentWeatherViewModel: ObservableObject {
     @Published var windSpeed: String = "--"
     @Published var humidity: String = "--"
     @Published var apparentTemperature: String = "--"
-    @Published private var weather: Weather?
+    @Published var weather: Weather?
 
-    init(weatherService: WeatherService = .shared) {
-        self.weatherService = weatherService
+    init(weather: Binding<Weather?>) {
+        self.weather = weather.wrappedValue
 
         setupSubscriptions()
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let weatherService: WeatherService
 }
 
 // MARK: - Private
 
 private extension CurrentWeatherViewModel {
     func setupSubscriptions() {
-        weatherService.$weatherLoadingState
-            .sink { [unowned self] state in
-                switch state {
-                case .loaded(let weather):
-                    self.weather = weather
-                default:
-                    break
-                }
-            }
-            .store(in: &disposeBag)
-
         $weather
             .sink { [unowned self] weather in
                 if let weather = weather {

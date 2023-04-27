@@ -1,5 +1,5 @@
 //
-//  WeatherViewModel.swift
+//  WeatherPageViewModel.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 18/04/2023.
@@ -9,48 +9,49 @@ import Combine
 import Foundation
 
 @MainActor
-final class WeatherViewModel: ObservableObject {
-    @Published var isLoading = false
+final class WeatherPageViewModel: ObservableObject {
+    @Published var isLoading = true
     @Published var isShowingError = false
     @Published var errorMessage: String?
-    @Published var isShowingCityListView = false
-    @Published var cityNameText: String = "Dubai"
+    @Published var weather: Weather?
+    private(set) var cityNameText: String = "Dubai"
 
     var dateText: String {
         let date = Date()
         return DateFormatter.todayFormatter.string(from: date)
     }
 
-    init(weatherService: WeatherService = .shared, cityStore: CityStore = .shared) {
+    init(city: City, weatherService: WeatherService = .shared, cityStore: CityStore = .shared) {
+        self.city = city
         self.weatherService = weatherService
         self.cityStore = cityStore
+        self.cityNameText = city.name ?? ""
 
         setupSubscriptions()
     }
     
-    func fetchWeather(city: City? = nil) {
+    func fetchWeather() {
         Task {
-            let city = city ?? cityStore.cities[0]
             try? await weatherService.getWeather(city: city)
         }
     }
     
-    func showCityListView() {
-        isShowingCityListView = true
-    }
-
     private var disposeBag = Set<AnyCancellable>()
+    private let city: City
     private let cityStore: CityStore
     private let weatherService: WeatherService
 }
 
 // MARK: - Private
 
-private extension WeatherViewModel {
+private extension WeatherPageViewModel {
     func setupSubscriptions() {
-        weatherService.$weatherLoadingState
+        weatherService.$weatherLoadingStates
+            .map { [unowned self] states in states[city] }
             .sink { [unowned self] state in
                 switch state {
+                case .loaded(let weather):
+                    self.weather = weather
                 case .failed(let error):
                     isShowingError = true
                     if let error = error as? RequestError {
@@ -63,21 +64,14 @@ private extension WeatherViewModel {
                 }
             }
             .store(in: &disposeBag)
-        
-        weatherService.$weatherLoadingState
+
+        weatherService.$weatherLoadingStates
+            .map { [unowned self] states in states[city] }
             .map { state in
                 if case .loading = state { return true }
                 return false
             }
             .assign(to: \.isLoading, on: self)
-            .store(in: &disposeBag)
-
-        cityStore.$selectedCity
-            .sink { [unowned self] city in
-                guard let city else { return }
-                cityNameText = city.name ?? ""
-                fetchWeather(city: city)
-            }
             .store(in: &disposeBag)
     }
 }
