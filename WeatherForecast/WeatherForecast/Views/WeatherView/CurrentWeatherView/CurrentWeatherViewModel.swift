@@ -17,6 +17,7 @@ final class CurrentWeatherViewModel: ObservableObject {
     @Published var temperature: String = "--"
     @Published var windSpeed: String = "--"
     @Published var humidity: String = "--"
+    @Published var apparentTemperature: String = "--"
 
     private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
@@ -66,6 +67,7 @@ private extension CurrentWeatherViewModel {
         let index = 0 // TODO: find index of current hour by converting current hour to "2023-04-27T06:00" format
         humidity = "\(weather.hourly.relativehumidity2M[index]) %"
 
-        // TODO: add apparent temperature
+        let roundedApparentTemperature = Int(weather.hourly.apparentTemperature[index])
+        apparentTemperature = "\(roundedApparentTemperature)º"
     }
 }

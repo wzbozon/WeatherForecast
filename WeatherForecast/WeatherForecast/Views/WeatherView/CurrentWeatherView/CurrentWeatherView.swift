@@ -45,10 +45,14 @@ struct CurrentWeatherView: View {
                         Text("HUMIDITY")
                         Text(viewModel.humidity)
                     }
+
+                    HStack {
+                        Text("APPARENT TEMP")
+                        Text(viewModel.apparentTemperature)
+                    }
                 }
                 .font(.caption)
             }
-            .padding(0)
         }
         .foregroundColor(.white)
         .padding(.horizontal)
