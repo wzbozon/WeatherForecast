@@ -25,4 +25,10 @@ extension DateFormatter {
         formatter.dateFormat = "EEEE, MMMM dd"
         return formatter
     }()
+
+    static let hourlyWeatherFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:'00'" // 2023-04-27T06:00
+        return formatter
+    }()
 }
