@@ -10,7 +10,7 @@ import Foundation
 import OSLog
 
 class WeatherService: ObservableObject {
-    @Published var weatherLoadingState: LoadingState<Weather> = .idle
+    @Published var weatherLoadingState: LoadingState<Weather> = .loading
 
     private let store: WeatherServiceStoreProtocol
     private var disposeBag = Set<AnyCancellable>()

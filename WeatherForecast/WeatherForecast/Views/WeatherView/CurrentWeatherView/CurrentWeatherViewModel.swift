@@ -13,7 +13,7 @@ final class CurrentWeatherViewModel: ObservableObject {
     @Published var weather: Weather?
     @Published var time: String = "--"
     @Published var summary: String = "Data Unavailable"
-    @Published var icon: String = "default"
+    @Published var icon: String = "sun.max"
     @Published var temperature: String = "--"
     @Published var windSpeed: String = "--"
 
