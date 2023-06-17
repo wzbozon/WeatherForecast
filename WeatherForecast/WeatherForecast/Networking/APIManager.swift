@@ -25,7 +25,7 @@ class APIManager {
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        log(url, urlRequest.httpBody, data)
+        // log(url, urlRequest.httpBody, data)
         
         return (data, response)
     }

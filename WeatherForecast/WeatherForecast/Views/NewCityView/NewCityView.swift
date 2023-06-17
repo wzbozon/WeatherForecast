@@ -33,6 +33,10 @@ struct NewCityView : View {
                     }
                 }
             }
+            .background {
+                WeatherBackgroundView()
+            }
+            .scrollContentBackground(.hidden)
             .disabled(viewModel.isValidating)
             .navigationBarTitle(Text("Add City"))
             .navigationBarItems(leading: cancelButton)

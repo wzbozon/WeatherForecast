@@ -10,6 +10,13 @@ import SwiftUI
 struct WeatherView: View {
     @StateObject private var viewModel = WeatherViewModel()
 
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white,
+            .font : UIFont(name:"Helvetica Neue Light", size: 32)!
+        ]
+    }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             WeatherBackgroundView()

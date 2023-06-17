@@ -15,8 +15,13 @@ struct CityRow : View {
             Text(city.name ?? "")
                 .lineLimit(nil)
                 .font(.title)
+                .fontWeight(.light)
+                .foregroundColor(.white)
+            Spacer()
         }
+        .listRowBackground(Color.white.opacity(0.08))
         .padding([.trailing, .top, .bottom])
+        .contentShape(Rectangle())
     }
 }
 

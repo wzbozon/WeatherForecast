@@ -15,10 +15,13 @@ struct CityListView : View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Your Cities")) {
+                Section(
+                    header: Text("Your Cities").foregroundColor(.white)
+                ) {
                     ForEach(viewModel.cities, id: \.name) { city in
                         CityRow(city: city)
                             .onTapGesture {
+                                print("Tapped cell")
                                 viewModel.selectCity(city)
                                 presentationMode.wrappedValue.dismiss()
                             }
@@ -26,6 +29,10 @@ struct CityListView : View {
                     .onDelete(perform: viewModel.delete)
                 }
             }
+            .background {
+                WeatherBackgroundView()
+            }
+            .scrollContentBackground(.hidden)
             .navigationBarItems(leading: EditButton(), trailing: addButton)
             .navigationBarTitle(Text("Weather"))
         }
