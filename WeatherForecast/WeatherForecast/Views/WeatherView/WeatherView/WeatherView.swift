@@ -10,8 +10,6 @@ import SwiftUI
 struct WeatherView: View {
     @StateObject private var viewModel = WeatherViewModel()
 
-    @State var page = 0
-
     var body: some View {
         ZStack(alignment: .bottom) {
             WeatherBackgroundView()
@@ -64,7 +62,7 @@ struct WeatherView: View {
 
     @ViewBuilder
     private var tabView: some View {
-        TabView(selection: $page) {
+        TabView(selection: $viewModel.page) {
             ForEach(viewModel.cities.indices, id: \.self) { i in
                 WeatherPageView(city: viewModel.cities[i])
                     .tag(i)
@@ -79,7 +77,7 @@ struct WeatherView: View {
             Spacer()
 
             PageControl(
-                currentPage: $page,
+                currentPage: $viewModel.page,
                 numberOfPages: viewModel.cities.count
             )
 

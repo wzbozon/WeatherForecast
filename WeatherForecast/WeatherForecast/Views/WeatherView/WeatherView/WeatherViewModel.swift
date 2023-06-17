@@ -14,6 +14,7 @@ final class WeatherViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var cities: [City] = []
     @Published var isShowingCityListView = false
+    @Published var page = 0
 
     init(cityStore: CityStore = .shared) {
         self.cityStore = cityStore
@@ -35,6 +36,14 @@ private extension WeatherViewModel {
     func setupSubscriptions() {
         cityStore.$cities
             .assign(to: \.cities, on: self)
+            .store(in: &disposeBag)
+
+        cityStore.$selectedCity
+            .compactMap { $0 }
+            .map { city in
+                self.cities.firstIndex(where: { $0.name == city.name }) ?? 0
+            }
+            .assign(to: \.page, on: self)
             .store(in: &disposeBag)
     }
 }
