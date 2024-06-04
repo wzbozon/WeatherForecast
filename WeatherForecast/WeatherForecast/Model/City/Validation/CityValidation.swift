@@ -13,8 +13,17 @@ class CityValidation: NSObject {
             completion(nil)
             return
         }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = [
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? ""
+        ]
+
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else {
                 completion(nil)
                 return

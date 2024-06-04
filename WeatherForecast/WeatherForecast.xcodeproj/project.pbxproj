@@ -104,7 +104,6 @@
 		FC6E687329EE77E500E2C839 /* WeatherPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPageViewModel.swift; sourceTree = "<group>"; };
 		FC86C37729FA259500B48A57 /* NewCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityViewModel.swift; sourceTree = "<group>"; };
 		FC86C37929FA259F00B48A57 /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
-		FC86C38029FA482400B48A57 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		FC86C38E29FA833F00B48A57 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		FC86C39029FA83F200B48A57 /* WeatherPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPageView.swift; sourceTree = "<group>"; };
 		FC86C39329FA84CC00B48A57 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -228,7 +227,6 @@
 				9215FAE329B447AB00B86A2A /* Colors.xcassets */,
 				FCAA815029AB5B40000E9860 /* Info.plist */,
 				FCAA814829AB5B40000E9860 /* Preview Content */,
-				FC86C38029FA482400B48A57 /* Config.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -695,7 +693,6 @@
 /* Begin XCBuildConfiguration section */
 		FCAA816729AB5B41000E9860 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -756,7 +753,6 @@
 		};
 		FCAA816829AB5B41000E9860 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -811,7 +807,6 @@
 		};
 		FCAA816A29AB5B41000E9860 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -833,7 +828,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alwawee.WeatherForecast;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alwawee.WeatherForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -843,7 +838,6 @@
 		};
 		FCAA816B29AB5B41000E9860 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -865,7 +859,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alwawee.WeatherForecast;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alwawee.WeatherForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -875,17 +869,16 @@
 		};
 		FCAA816D29AB5B41000E9860 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2T3XHV74BN;
+				DEVELOPMENT_TEAM = XFV3M47D7P;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alwawee.WeatherForecastTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alwawee.WeatherForecastTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -896,17 +889,16 @@
 		};
 		FCAA816E29AB5B41000E9860 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2T3XHV74BN;
+				DEVELOPMENT_TEAM = XFV3M47D7P;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alwawee.WeatherForecastTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alwawee.WeatherForecastTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -917,15 +909,14 @@
 		};
 		FCAA817029AB5B41000E9860 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2T3XHV74BN;
+				DEVELOPMENT_TEAM = XFV3M47D7P;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alwawee.WeatherForecastUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alwawee.WeatherForecastUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -936,15 +927,14 @@
 		};
 		FCAA817129AB5B41000E9860 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC86C38029FA482400B48A57 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2T3XHV74BN;
+				DEVELOPMENT_TEAM = XFV3M47D7P;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alwawee.WeatherForecastUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alwawee.WeatherForecastUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;

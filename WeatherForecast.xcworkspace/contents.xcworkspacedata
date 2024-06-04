@@ -7,9 +7,35 @@
    <FileRef
       location = "group:LICENSE">
    </FileRef>
-   <FileRef
-      location = "group:Templates">
-   </FileRef>
+   <Group
+      location = "group:Templates"
+      name = "Templates">
+      <FileRef
+         location = "group:TemplateView.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TemplateService.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TemplateRouter.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TemplateViewModel.swift">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Screenshots"
+      name = "Screenshots">
+      <FileRef
+         location = "group:2.png">
+      </FileRef>
+      <FileRef
+         location = "group:3.png">
+      </FileRef>
+      <FileRef
+         location = "group:1.png">
+      </FileRef>
+   </Group>
    <FileRef
       location = "container:WeatherForecast/WeatherForecast.xcodeproj">
    </FileRef>

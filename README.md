@@ -1,6 +1,26 @@
 # Introduction
 
-iOS Weather Forecast App (SwiftUI + MVVM + Router + async/await + CoreData + CloudKit)
+iOS Weather Forecast App (SwiftUI + MVVM + Combine + URLSession async/await + CoreData)
+
+# Features
+
+- Display the weather for the selected city using Open-meteo API
+- City name autocompletion using Google Places API
+- Get city location using Google Places API
+- Add cities to the local CoreData database
+
+# Screenshots
+
+<p float="left">
+  <img src="/Screenshots/1.png" width="240" />
+  <img src="/Screenshots/2.png" width="240" /> 
+  <img src="/Screenshots/3.png" width="240" />
+</p>
+
+# How to run
+
+1. Get key for Google Places API
+2. Replace 'GooglePlacesAPIKey' in 'Info.plist' with your key
 
 # Reference links
 
@@ -15,9 +35,6 @@ iOS Weather Forecast App (SwiftUI + MVVM + Router + async/await + CoreData + Clo
 - async / await, URLSession
 - CoreData
 - SPM
-- TBD, feature toggles
-- GitHub CI/CD, Unit + UI tests, Fastlane, SwiftLint
-- Firebase Analytics, RemoteConfig, Crashlytics, OSLog
 
 # Architecture
 
@@ -29,42 +46,3 @@ iOS Weather Forecast App (SwiftUI + MVVM + Router + async/await + CoreData + Clo
 - Each Service holds `LoadingStates(idle, data, error)` for it's data and state
 - View and ViewModel can delegate routing to Router if there are many routes from a View
 - Errors are passed using a `LoadingState` and displayed using `errorPopup` ViewModifier (see ErrorHandling.md)
-
-# SwiftLint
-
-To install Swiftlint: 
-
-    % brew install SwiftLint
-
-If you get Permission denied error, do from project folder:
-
-    % chmod 755 scripts/swiftlint.sh
-    
-# Git LFS
-
-We store large files in Git LFS (for example, video files)
-
-To install Git LFS: 
-
-    % brew install git-lfs
-
-To pull Git LFS files after you pull a project itself:
-
-    % git lfs pull
-
-# Fastlane
-
-Update version and build number manually.
-To publish a version on AppStore TestFlight run following commands: 
-
-    % bundle install
-    % bundle exec fastlane beta
-
-# Logging
-
-To log anything in the app use Logger.default.info and always put a context:
-
-    import OSLog
-    Logger.default.info("[Context] Logs with \(string, privacy: .public) interpolation")
-    
-These logs can be exported using Debug Menu as a file.

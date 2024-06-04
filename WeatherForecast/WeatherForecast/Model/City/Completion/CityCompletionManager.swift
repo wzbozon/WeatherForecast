@@ -18,10 +18,19 @@ class CityCompletionManager: NSObject {
             completion([])
             return
         }
-        
+       
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = [
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? ""
+        ]
+
         completionTask?.cancel()
         
-        completionTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        completionTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else {
                 completion([])
                 return

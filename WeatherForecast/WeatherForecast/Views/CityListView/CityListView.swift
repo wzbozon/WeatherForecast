@@ -44,7 +44,7 @@ struct CityListView : View {
         }) {
             Image(systemName: "plus.circle.fill")
                 .font(.title)
-        }.sheet(isPresented: $isShowingNewCityView) {
+        }.fullScreenCover(isPresented: $isShowingNewCityView) {
             NewCityView()
         }
     }
