@@ -4,10 +4,10 @@ iOS Weather Forecast App (SwiftUI + MVVM + Combine + URLSession async/await + Co
 
 # Features
 
-- Display the weather for the selected city using Open-meteo API
-- City name autocompletion using Google Places API
-- Get city location using Google Places API
-- Add cities to the local CoreData database
+- Display the weather for the selected city
+- Swipe left / right to switch between cities
+- Add, save cities locally, get city location
+- City name autocompletion
 
 # Screenshots
 
@@ -39,10 +39,11 @@ iOS Weather Forecast App (SwiftUI + MVVM + Combine + URLSession async/await + Co
 # Architecture
 
 - MVVM, see templates folder
-- Model consists of small Services
+- Model consists of small Repositories
 - Model is shared across modules using EnvironmentObject
-- Services are injected to ViewModels
+- Repositories use network Services or CoreData
+- Repositories are injected to ViewModels
 - ViewModels are injected to Views as @StateObject
-- Each Service holds `LoadingStates(idle, data, error)` for it's data and state
+- Each Repository holds `LoadingStates(idle, data, error)` for it's data and state
 - View and ViewModel can delegate routing to Router if there are many routes from a View
 - Errors are passed using a `LoadingState` and displayed using `errorPopup` ViewModifier (see ErrorHandling.md)

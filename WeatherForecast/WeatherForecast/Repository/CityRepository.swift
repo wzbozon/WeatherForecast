@@ -1,5 +1,5 @@
 //
-//  CityStore.swift
+//  CityRepository.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 23/04/2023.
@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-class CityStore: ObservableObject {
-    static let shared = CityStore()
+class CityRepository: ObservableObject {
+    static let shared = CityRepository()
 
     @Published var cities: [City] = []
     @Published var selectedCity: City?
@@ -42,7 +42,7 @@ class CityStore: ObservableObject {
         fetchCities()
     }
 
-    func addCity(cityData: CityValidation.CityData) {
+    func addCity(cityData: CityData) {
         let city = City(context: viewContext)
         city.id = UUID()
         city.timestamp = Date()
@@ -78,7 +78,7 @@ class CityStore: ObservableObject {
 
 // MARK: - Private
 
-private extension CityStore {
+private extension CityRepository {
     func addDefaultCity() throws {
         addCity(name: "Dubai", longitude: 55.14, latitude: 25.09)
     }

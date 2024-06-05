@@ -1,14 +1,21 @@
 //
-//  CityValidation.swift
+//  CityValidationService.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 23/04/2023.
 //
 
-import UIKit
+import Foundation
 
-class CityValidation: NSObject {
-    class func validateCity(withID placeID: String, _ completion: @escaping (_ cityData: CityValidation.CityData?) -> Void) {
+protocol CityValidationService: AnyObject {
+    static func validateCity(
+        withID placeID: String,
+        _ completion: @escaping (_ cityData: CityData?) -> Void
+    )
+}
+
+class DefaultCityValidationService: CityValidationService {
+    static func validateCity(withID placeID: String, _ completion: @escaping (_ cityData: CityData?) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityData(for: placeID)) else {
             completion(nil)
             return
@@ -31,7 +38,7 @@ class CityValidation: NSObject {
             
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(CityValidation.Result.self, from: data)
+                let result = try decoder.decode(CityValidationResponse.self, from: data)
                 completion(result.cityData)
             } catch {
                 print(error.localizedDescription)

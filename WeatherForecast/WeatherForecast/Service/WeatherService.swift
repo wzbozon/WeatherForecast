@@ -1,5 +1,5 @@
 //
-//  WeatherServiceStore.swift
+//  WeatherService.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 22/04/2023.
@@ -8,11 +8,11 @@
 import Foundation
 import OSLog
 
-protocol WeatherServiceStoreProtocol {
+protocol WeatherService {
     func getWeather(city: City) async throws -> Weather
 }
 
-actor WeatherServiceStore: WeatherServiceStoreProtocol {
+actor DefaultWeatherService: WeatherService {
     func getWeather(city: City) async throws -> Weather {
         if let weather = cache[city] {
             return weather
@@ -26,7 +26,7 @@ actor WeatherServiceStore: WeatherServiceStoreProtocol {
 
         if let response = response as? HTTPURLResponse,
            response.statusCode != Constants.positiveResponseCode {
-            throw RequestError.statusNotOk
+            throw RequestError.networkError
         }
 
         do {
@@ -34,10 +34,10 @@ actor WeatherServiceStore: WeatherServiceStoreProtocol {
             cache[city] = weather
             return weather
         } catch let error as DecodingError {
-            Logger.default.info("[WeatherServiceStore] Decoding error: \(error.message, privacy: .public)")
+            Logger.default.info("[DefaultWeatherService] Decoding error: \(error.message, privacy: .public)")
             throw error
         } catch {
-            Logger.default.info("[WeatherServiceStore] Error: \(error, privacy: .public)")
+            Logger.default.info("[DefaultWeatherService] Error: \(error, privacy: .public)")
             throw error
         }
     }

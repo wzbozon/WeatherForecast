@@ -11,31 +11,31 @@ import Foundation
 class CityListViewModel: ObservableObject {
     @Published var cities: [City] = []
 
-    init(cityStore: CityStore = .shared) {
-        self.cityStore = cityStore
+    init(cityRepository: CityRepository = .shared) {
+        self.cityRepository = cityRepository
 
         setupSubscriptions()
     }
 
     func delete(at offsets: IndexSet) {
         for index in offsets {
-            cityStore.deleteCity(cityStore.cities[index])
+            cityRepository.deleteCity(cityRepository.cities[index])
         }
     }
 
     func selectCity(_ city: City) {
-        cityStore.selectCity(city)
+        cityRepository.selectCity(city)
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let cityStore: CityStore
+    private let cityRepository: CityRepository
 }
 
 // MARK: - Private
 
 private extension CityListViewModel {
     func setupSubscriptions() {
-        cityStore.$cities
+        cityRepository.$cities
             .assign(to: \.cities, on: self)
             .store(in: &disposeBag)
     }

@@ -25,8 +25,10 @@ class APIManager {
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        // log(url, urlRequest.httpBody, data)
-        
+        #if DEBUG
+        log(url, urlRequest.httpBody, data)
+        #endif
+
         return (data, response)
     }
 }
@@ -107,37 +109,6 @@ private extension APIManager {
         } else {
             debugPrint("🛬", String(decoding: data, as: UTF8.self))
             Logger.default.log("[APIManager] \(String(decoding: data, as: UTF8.self), privacy: .public)")
-        }
-    }
-    
-    func parseResponse<T: Codable> (
-        response: HTTPURLResponse?,
-        data: Data,
-        model: T.Type
-    ) -> Result<T, RequestError>? {
-        guard let response = response else {
-            return .failure(.noResponse)
-        }
-        
-        switch response.statusCode {
-        case 200...299:
-            let decoder = JSONDecoder()
-            do {
-                let parsedData = try decoder.decode(model, from: data)
-                return .success(parsedData)
-            } catch let error as DecodingError {
-                Logger.default.info("[APIManager] Decoding error: \(error.message, privacy: .public)")
-                return .failure(.decodingError(error))
-            } catch {
-                Logger.default.info("[APIManager] Error: \(error, privacy: .public)")
-                return .failure(.statusNotOk)
-            }
-        case 400...499:
-            Logger.default.log("[APIManager] Parse Error: \(response.statusCode, privacy: .public)")
-            return .failure(.unknown(data))
-        default:
-            Logger.default.log("[APIManager] Error: \(response.statusCode, privacy: .public)")
-            return .failure(.unexpectedStatusCode)
         }
     }
 }

@@ -21,10 +21,10 @@ final class WeatherPageViewModel: ObservableObject {
         return DateFormatter.todayFormatter.string(from: date)
     }
 
-    init(city: City, weatherService: WeatherService = .shared, cityStore: CityStore = .shared) {
+    init(city: City, weatherRepository: WeatherRepository = .shared, cityRepository: CityRepository = .shared) {
         self.city = city
-        self.weatherService = weatherService
-        self.cityStore = cityStore
+        self.weatherRepository = weatherRepository
+        self.cityRepository = cityRepository
         self.cityNameText = city.name ?? ""
 
         setupSubscriptions()
@@ -32,21 +32,21 @@ final class WeatherPageViewModel: ObservableObject {
     
     func fetchWeather() {
         Task {
-            try? await weatherService.getWeather(city: city)
+            try? await weatherRepository.getWeather(city: city)
         }
     }
     
     private var disposeBag = Set<AnyCancellable>()
     private let city: City
-    private let cityStore: CityStore
-    private let weatherService: WeatherService
+    private let cityRepository: CityRepository
+    private let weatherRepository: WeatherRepository
 }
 
 // MARK: - Private
 
 private extension WeatherPageViewModel {
     func setupSubscriptions() {
-        weatherService.$weatherLoadingStates
+        weatherRepository.$weatherLoadingStates
             .map { [unowned self] states in states[city] }
             .sink { [unowned self] state in
                 switch state {
@@ -65,7 +65,7 @@ private extension WeatherPageViewModel {
             }
             .store(in: &disposeBag)
 
-        weatherService.$weatherLoadingStates
+        weatherRepository.$weatherLoadingStates
             .map { [unowned self] states in states[city] }
             .map { state in
                 if case .loading = state { return true }

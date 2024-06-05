@@ -16,8 +16,8 @@ final class WeatherViewModel: ObservableObject {
     @Published var isShowingCityListView = false
     @Published var page = 0
 
-    init(cityStore: CityStore = .shared) {
-        self.cityStore = cityStore
+    init(cityRepository: CityRepository = .shared) {
+        self.cityRepository = cityRepository
 
         setupSubscriptions()
     }
@@ -27,18 +27,18 @@ final class WeatherViewModel: ObservableObject {
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let cityStore: CityStore
+    private let cityRepository: CityRepository
 }
 
 // MARK: - Private
 
 private extension WeatherViewModel {
     func setupSubscriptions() {
-        cityStore.$cities
+        cityRepository.$cities
             .assign(to: \.cities, on: self)
             .store(in: &disposeBag)
 
-        cityStore.$selectedCity
+        cityRepository.$selectedCity
             .compactMap { $0 }
             .map { city in
                 self.cities.firstIndex(where: { $0.name == city.name }) ?? 0

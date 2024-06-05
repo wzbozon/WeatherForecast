@@ -10,22 +10,25 @@ import Foundation
 
 class NewCityViewModel: ObservableObject {
     @Published var isValidating: Bool = false
-    @Published var predictions: [CityCompletion.Prediction] = []
+    @Published var predictions: [CityPrediction] = []
 
-    init(cityStore: CityStore = .shared, completer: CityCompletion = .init()) {
-        self.cityStore = cityStore
-        self.completer = completer
+    init(
+        cityRepository: CityRepository = .shared,
+        cityCompletionRepository: CityCompletionRepository = .init()
+    ) {
+        self.cityRepository = cityRepository
+        self.cityCompletionRepository = cityCompletionRepository
 
         setupSubscriptions()
     }
 
-    func addCity(from prediction: CityCompletion.Prediction) {
+    func addCity(from prediction: CityPrediction) {
         isValidating = true
 
-        CityValidation.validateCity(withID: prediction.id) { cityData in
+        DefaultCityValidationService.validateCity(withID: prediction.id) { cityData in
             if let cityData {
                 DispatchQueue.main.async {
-                    self.cityStore.addCity(cityData: cityData)
+                    self.cityRepository.addCity(cityData: cityData)
                 }
             }
 
@@ -36,17 +39,17 @@ class NewCityViewModel: ObservableObject {
     }
 
     func search(_ text: String) {
-        completer.search(text)
+        cityCompletionRepository.search(text)
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let cityStore: CityStore
-    private let completer: CityCompletion
+    private let cityRepository: CityRepository
+    private let cityCompletionRepository: CityCompletionRepository
 }
 
 private extension NewCityViewModel {
     func setupSubscriptions() {
-        completer.$predictions
+        cityCompletionRepository.$predictions
             .assign(to: \.predictions, on: self)
             .store(in: &disposeBag)
     }

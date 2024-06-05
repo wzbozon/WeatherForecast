@@ -9,22 +9,22 @@ import Combine
 import Foundation
 import OSLog
 
-class WeatherService: ObservableObject {
-    static let shared = WeatherService()
+class WeatherRepository: ObservableObject {
+    static let shared = WeatherRepository()
     
     @Published var weatherLoadingStates: [City: LoadingState<Weather>] = [:]
 
-    private let store: WeatherServiceStoreProtocol
+    private let store: WeatherService
     private var disposeBag = Set<AnyCancellable>()
 
     init() {
-        Logger.default.info("[WeatherService] init")
+        Logger.default.info("[WeatherRepository] init")
 
-        store = WeatherServiceStore()
+        store = DefaultWeatherService()
     }
 
     deinit {
-        Logger.default.info("[WeatherService] deinit")
+        Logger.default.info("[WeatherRepository] deinit")
     }
 
     @MainActor
