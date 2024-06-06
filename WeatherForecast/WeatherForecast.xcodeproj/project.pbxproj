@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CD7C73E2C11C5DD005FBBDE /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD7C73D2C11C5DD005FBBDE /* Factory */; };
+		3CD7C7412C11C623005FBBDE /* Container+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD7C7402C11C623005FBBDE /* Container+Extension.swift */; };
 		9215FAE429B447AB00B86A2A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9215FAE329B447AB00B86A2A /* Colors.xcassets */; };
 		9215FAE729B447FA00B86A2A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9215FAE629B447FA00B86A2A /* Colors.swift */; };
 		FC6E686E29EE746C00E2C839 /* WeatherBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6E686D29EE746C00E2C839 /* WeatherBackgroundView.swift */; };
@@ -48,9 +50,9 @@
 		FC8EEF9829F523FB006F35E0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEF9729F523FB006F35E0 /* Date+Extension.swift */; };
 		FC8EEF9B29F56DF5006F35E0 /* CityValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEF9A29F56DF5006F35E0 /* CityValidationService.swift */; };
 		FC8EEF9D29F56E16006F35E0 /* CityValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEF9C29F56E16006F35E0 /* CityValidationResponse.swift */; };
-		FC8EEFA029F56EE7006F35E0 /* CityCompletionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEF9F29F56EE7006F35E0 /* CityCompletionRepository.swift */; };
+		FC8EEFA029F56EE7006F35E0 /* CityAutocompleteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEF9F29F56EE7006F35E0 /* CityAutocompleteRepository.swift */; };
 		FC8EEFA229F56F02006F35E0 /* CityCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEFA129F56F02006F35E0 /* CityCompletionResponse.swift */; };
-		FC8EEFA529F56F33006F35E0 /* CityCompletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEFA429F56F33006F35E0 /* CityCompletionService.swift */; };
+		FC8EEFA529F56F33006F35E0 /* CityAutocompleteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEFA429F56F33006F35E0 /* CityAutocompleteService.swift */; };
 		FC8EEFAA29F56F81006F35E0 /* CityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEFA929F56F81006F35E0 /* CityRepository.swift */; };
 		FC8EEFAF29F56FCE006F35E0 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEFAE29F56FCE006F35E0 /* CityListView.swift */; };
 		FC8EEFB129F56FED006F35E0 /* CityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EEFB029F56FED006F35E0 /* CityRow.swift */; };
@@ -95,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CD7C7402C11C623005FBBDE /* Container+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Extension.swift"; sourceTree = "<group>"; };
 		9215FAE329B447AB00B86A2A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9215FAE629B447FA00B86A2A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FC6E686D29EE746C00E2C839 /* WeatherBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBackgroundView.swift; sourceTree = "<group>"; };
@@ -136,9 +139,9 @@
 		FC8EEF9729F523FB006F35E0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		FC8EEF9A29F56DF5006F35E0 /* CityValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityValidationService.swift; sourceTree = "<group>"; };
 		FC8EEF9C29F56E16006F35E0 /* CityValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityValidationResponse.swift; sourceTree = "<group>"; };
-		FC8EEF9F29F56EE7006F35E0 /* CityCompletionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCompletionRepository.swift; sourceTree = "<group>"; };
+		FC8EEF9F29F56EE7006F35E0 /* CityAutocompleteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAutocompleteRepository.swift; sourceTree = "<group>"; };
 		FC8EEFA129F56F02006F35E0 /* CityCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCompletionResponse.swift; sourceTree = "<group>"; };
-		FC8EEFA429F56F33006F35E0 /* CityCompletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCompletionService.swift; sourceTree = "<group>"; };
+		FC8EEFA429F56F33006F35E0 /* CityAutocompleteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAutocompleteService.swift; sourceTree = "<group>"; };
 		FC8EEFA929F56F81006F35E0 /* CityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRepository.swift; sourceTree = "<group>"; };
 		FC8EEFAE29F56FCE006F35E0 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
 		FC8EEFB029F56FED006F35E0 /* CityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRow.swift; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 				FC8EF34629F821DE006F35E0 /* Collections in Frameworks */,
 				FC8EF34829F821DE006F35E0 /* DequeModule in Frameworks */,
 				FC8EF34A29F821DE006F35E0 /* OrderedCollections in Frameworks */,
+				3CD7C73E2C11C5DD005FBBDE /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +203,7 @@
 			children = (
 				FC8EEF7529F423CB006F35E0 /* WeatherServiceEndpoint.swift */,
 				FC8EEF7929F42597006F35E0 /* WeatherService.swift */,
-				FC8EEFA429F56F33006F35E0 /* CityCompletionService.swift */,
+				FC8EEFA429F56F33006F35E0 /* CityAutocompleteService.swift */,
 				FC8EEF9A29F56DF5006F35E0 /* CityValidationService.swift */,
 			);
 			path = Service;
@@ -210,9 +214,17 @@
 			children = (
 				FC8EEF7329F423B7006F35E0 /* WeatherRepository.swift */,
 				FC8EEFA929F56F81006F35E0 /* CityRepository.swift */,
-				FC8EEF9F29F56EE7006F35E0 /* CityCompletionRepository.swift */,
+				FC8EEF9F29F56EE7006F35E0 /* CityAutocompleteRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		3CD7C73F2C11C5FB005FBBDE /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3CD7C7402C11C623005FBBDE /* Container+Extension.swift */,
+			);
+			path = DIContainer;
 			sourceTree = "<group>";
 		};
 		9215FAD729B443F000B86A2A /* Views */ = {
@@ -398,6 +410,7 @@
 		FCAA814129AB5B3F000E9860 /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
+				3CD7C73F2C11C5FB005FBBDE /* DIContainer */,
 				3C1DB3EC2C10748D00B836F4 /* Repository */,
 				3C1DB3EB2C10741000B836F4 /* Service */,
 				FC8EF33F29F820A7006F35E0 /* CoreData */,
@@ -457,6 +470,7 @@
 				FC8EF34529F821DE006F35E0 /* Collections */,
 				FC8EF34729F821DE006F35E0 /* DequeModule */,
 				FC8EF34929F821DE006F35E0 /* OrderedCollections */,
+				3CD7C73D2C11C5DD005FBBDE /* Factory */,
 			);
 			productName = WeatherForecast;
 			productReference = FCAA813F29AB5B3F000E9860 /* WeatherForecast.app */;
@@ -532,6 +546,7 @@
 			mainGroup = FCAA813629AB5B3F000E9860;
 			packageReferences = (
 				FC8EF34429F821DE006F35E0 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				3CD7C73C2C11C5DD005FBBDE /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = FCAA814029AB5B3F000E9860 /* Products */;
 			projectDirPath = "";
@@ -608,7 +623,7 @@
 				FC8EEF8229F42CF2006F35E0 /* UIConstants.swift in Sources */,
 				FC6E687229EE766F00E2C839 /* WeatherHeaderView.swift in Sources */,
 				FC6E687029EE74A100E2C839 /* WeatherView.swift in Sources */,
-				FC8EEFA029F56EE7006F35E0 /* CityCompletionRepository.swift in Sources */,
+				FC8EEFA029F56EE7006F35E0 /* CityAutocompleteRepository.swift in Sources */,
 				FC8EEF8829F42DFE006F35E0 /* FixedText.swift in Sources */,
 				FCEFD71E29EE807800F5122A /* CurrentWeatherView.swift in Sources */,
 				FC8EEF6629F4217F006F35E0 /* ServerEnvironment.swift in Sources */,
@@ -621,7 +636,7 @@
 				FC8EEF6E29F4229D006F35E0 /* Data+Extension.swift in Sources */,
 				FC8EEF7829F42529006F35E0 /* LoadingState.swift in Sources */,
 				FC8EEFB329F57001006F35E0 /* NewCityView.swift in Sources */,
-				FC8EEFA529F56F33006F35E0 /* CityCompletionService.swift in Sources */,
+				FC8EEFA529F56F33006F35E0 /* CityAutocompleteService.swift in Sources */,
 				FC8EEF9229F506E0006F35E0 /* DayWeather.swift in Sources */,
 				FC8EEF9B29F56DF5006F35E0 /* CityValidationService.swift in Sources */,
 				FC8EEF8029F42CDB006F35E0 /* AlertView.swift in Sources */,
@@ -634,6 +649,7 @@
 				FC86C37829FA259500B48A57 /* NewCityViewModel.swift in Sources */,
 				FC8EEF5E29F42026006F35E0 /* RequestType.swift in Sources */,
 				FC8EEF6A29F42240006F35E0 /* APIResponse.swift in Sources */,
+				3CD7C7412C11C623005FBBDE /* Container+Extension.swift in Sources */,
 				FC86C38F29FA833F00B48A57 /* PageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -965,6 +981,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3CD7C73C2C11C5DD005FBBDE /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 		FC8EF34429F821DE006F35E0 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
@@ -976,6 +1000,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3CD7C73D2C11C5DD005FBBDE /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD7C73C2C11C5DD005FBBDE /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
 		FC8EF34529F821DE006F35E0 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FC8EF34429F821DE006F35E0 /* XCRemoteSwiftPackageReference "swift-collections" */;

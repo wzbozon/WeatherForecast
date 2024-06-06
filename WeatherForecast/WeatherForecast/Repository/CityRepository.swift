@@ -7,15 +7,21 @@
 
 import Foundation
 import CoreData
+import OSLog
 
 class CityRepository: ObservableObject {
-    static let shared = CityRepository()
 
     @Published var cities: [City] = []
     @Published var selectedCity: City?
 
     init() {
+        Logger.default.info("[CityRepository] init")
+
         fetchCities()
+    }
+
+    deinit {
+        Logger.default.info("[CityRepository] deinit")
     }
 
     func fetchCities() {

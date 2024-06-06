@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeatherBackgroundView: View {
+
     var body: some View {
         LinearGradient(
             gradient: Gradient(

@@ -5,6 +5,7 @@
 //  Created by Denis Kutlubaev on 22/04/2023.
 //
 
+import Factory
 import Foundation
 import OSLog
 
@@ -13,12 +14,15 @@ protocol WeatherService {
 }
 
 actor DefaultWeatherService: WeatherService {
+
+    @Injected(\.apiManager) private var apiManager
+
     func getWeather(city: City) async throws -> Weather {
         if let weather = cache[city] {
             return weather
         }
 
-        let (data, response) = try await APIManager.shared.sendRequest(
+        let (data, response) = try await apiManager.sendRequest(
             endpoint: WeatherServiceEndpoint.getForecast(city: city)
         )
 

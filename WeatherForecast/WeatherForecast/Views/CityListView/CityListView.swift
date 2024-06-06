@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CityListView : View {
+
     @StateObject private var viewModel = CityListViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var isShowingNewCityView = false

@@ -11,6 +11,7 @@ import SwiftUI
 
 @MainActor
 final class CurrentWeatherViewModel: ObservableObject {
+
     @Published var time: String = "--"
     @Published var summary: String = "Data Unavailable"
     @Published var icon: String = "sun.max"

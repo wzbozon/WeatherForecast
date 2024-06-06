@@ -6,19 +6,18 @@
 //
 
 import Combine
+import Factory
 import Foundation
 
 class NewCityViewModel: ObservableObject {
+
     @Published var isValidating: Bool = false
     @Published var predictions: [CityPrediction] = []
 
-    init(
-        cityRepository: CityRepository = .shared,
-        cityCompletionRepository: CityCompletionRepository = .init()
-    ) {
-        self.cityRepository = cityRepository
-        self.cityCompletionRepository = cityCompletionRepository
+    @Injected(\.cityRepository) private var cityRepository
+    @Injected(\.cityAutocompleteRepository) private var cityAutocompleteRepository
 
+    init() {
         setupSubscriptions()
     }
 
@@ -39,17 +38,15 @@ class NewCityViewModel: ObservableObject {
     }
 
     func search(_ text: String) {
-        cityCompletionRepository.search(text)
+        cityAutocompleteRepository.search(text)
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let cityRepository: CityRepository
-    private let cityCompletionRepository: CityCompletionRepository
 }
 
 private extension NewCityViewModel {
     func setupSubscriptions() {
-        cityCompletionRepository.$predictions
+        cityAutocompleteRepository.$predictions
             .assign(to: \.predictions, on: self)
             .store(in: &disposeBag)
     }

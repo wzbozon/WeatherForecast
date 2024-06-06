@@ -8,6 +8,7 @@ import SwiftUI
 
 /// MVVM View Template
 struct TemplateView: View {
+
     @StateObject private var viewModel: TemplateViewModel
     @StateObject private var router: DebugMenuRouter
     @EnvironmentObject private var model: Model

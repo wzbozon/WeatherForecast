@@ -8,6 +8,7 @@
 import UIKit
 
 class NetworkManager: NSObject {
+
     struct Key {
         static var googleMaps: String {
             let googlePlacesAPIKey = Bundle.main.object(

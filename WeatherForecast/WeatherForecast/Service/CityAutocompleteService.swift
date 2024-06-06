@@ -1,5 +1,5 @@
 //
-//  CityCompletionService.swift
+//  CityAutocompleteService.swift
 //  WeatherForecast
 //
 //  Created by Denis Kutlubaev on 23/04/2023.
@@ -7,14 +7,15 @@
 
 import Foundation
 
-protocol CityCompletionService: AnyObject {
+protocol CityAutocompleteService: AnyObject {
     func getCompletion(
         for search: String,
         _ completion: @escaping (_ results: [CityPrediction]) -> Void
     )
 }
 
-class DefaultCityCompletionService: CityCompletionService {
+class DefaultCityAutocompleteService: CityAutocompleteService {
+
     var completionTask: URLSessionDataTask?
     
     func getCompletion(

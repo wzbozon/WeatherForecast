@@ -15,6 +15,7 @@ protocol CityValidationService: AnyObject {
 }
 
 class DefaultCityValidationService: CityValidationService {
+
     static func validateCity(withID placeID: String, _ completion: @escaping (_ cityData: CityData?) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityData(for: placeID)) else {
             completion(nil)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
+
     @ObservedObject private var viewModel: CurrentWeatherViewModel
     
     init(weather: Binding<Weather?>) {

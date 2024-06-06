@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeatherPageView: View {
+
     @ObservedObject private var viewModel: WeatherPageViewModel
 
     init(city: City) {

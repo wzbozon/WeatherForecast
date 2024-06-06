@@ -10,17 +10,16 @@ import Foundation
 import OSLog
 
 class WeatherRepository: ObservableObject {
-    static let shared = WeatherRepository()
-    
+
     @Published var weatherLoadingStates: [City: LoadingState<Weather>] = [:]
 
-    private let store: WeatherService
+    private let weatherService: WeatherService
     private var disposeBag = Set<AnyCancellable>()
 
     init() {
         Logger.default.info("[WeatherRepository] init")
 
-        store = DefaultWeatherService()
+        weatherService = DefaultWeatherService()
     }
 
     deinit {
@@ -32,7 +31,7 @@ class WeatherRepository: ObservableObject {
         weatherLoadingStates[city] = .loading
 
         do {
-            let weather = try await store.getWeather(city: city)
+            let weather = try await weatherService.getWeather(city: city)
             weatherLoadingStates[city] = .loaded(weather)
         } catch {
             weatherLoadingStates[city] = .failed(error)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeatherFooterView: View {
+
     var onButtonTap: (() -> Void)?
 
     var body: some View {

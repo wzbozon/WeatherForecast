@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Popup<PopupContent>: ViewModifier where PopupContent: View {
+
     @Binding var isPresented: Bool
 
     var content: () -> PopupContent

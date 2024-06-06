@@ -9,10 +9,7 @@ import Foundation
 import OSLog
 
 class APIManager {
-    static var shared = APIManager()
-    
-    private init() {}
-    
+
     func sendRequest (
         endpoint: Endpoint,
         isDebug: Bool = false

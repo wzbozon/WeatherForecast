@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CityRow : View {
+
     @ObservedObject var city: City
 
     var body: some View {

@@ -8,6 +8,7 @@
 import Foundation
 
 enum ServerEnvironment: String, CaseIterable, Identifiable {
+
     case production
 
     static var current: ServerEnvironment {

@@ -11,6 +11,7 @@ import SwiftUI
 
 @MainActor
 final class DailyWeatherViewModel: ObservableObject {
+
     @Published var isLoading = false
     @Published var isShowingError = false
     @Published var errorMessage: String?

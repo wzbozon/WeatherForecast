@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AlertView: View {
+
     let title: String
     let message: String?
     let cancelButtonTitle: String

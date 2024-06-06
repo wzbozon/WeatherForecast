@@ -6,14 +6,20 @@
 //
 
 import Combine
+import Factory
 import Foundation
 
 @MainActor
 final class WeatherPageViewModel: ObservableObject {
+
     @Published var isLoading = true
     @Published var isShowingError = false
     @Published var errorMessage: String?
     @Published var weather: Weather?
+
+    @Injected(\.cityRepository) private var cityRepository
+    @Injected(\.weatherRepository) private var weatherRepository
+
     private(set) var cityNameText: String = "Dubai"
 
     var dateText: String {
@@ -21,10 +27,8 @@ final class WeatherPageViewModel: ObservableObject {
         return DateFormatter.todayFormatter.string(from: date)
     }
 
-    init(city: City, weatherRepository: WeatherRepository = .shared, cityRepository: CityRepository = .shared) {
+    init(city: City) {
         self.city = city
-        self.weatherRepository = weatherRepository
-        self.cityRepository = cityRepository
         self.cityNameText = city.name ?? ""
 
         setupSubscriptions()
@@ -38,8 +42,6 @@ final class WeatherPageViewModel: ObservableObject {
     
     private var disposeBag = Set<AnyCancellable>()
     private let city: City
-    private let cityRepository: CityRepository
-    private let weatherRepository: WeatherRepository
 }
 
 // MARK: - Private

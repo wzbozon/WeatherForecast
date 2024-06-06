@@ -22,9 +22,6 @@ extension Data {
 
 extension Data {
     // NSString gives us a nice sanitized debugDescription
-    // How to use:
-    // let str = "{\"foo\": \"bar\"}".data(using: .utf8)!.prettyPrintedJSONString!
-    // debugPrint(str)
     var prettyPrintedJSONString: NSString? {
         guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
               let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),

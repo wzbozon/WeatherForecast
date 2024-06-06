@@ -8,6 +8,7 @@
 import Foundation
 
 enum WeatherServiceEndpoint: Endpoint {
+
     case getForecast(city: City)
 
     var path: String {

@@ -10,6 +10,7 @@ import Foundation
 // MARK: - TemplateServiceEndpoint
 
 enum TemplateServiceEndpoint: Endpoint {
+
     case getItems
 
     var path: String {

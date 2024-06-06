@@ -6,14 +6,16 @@
 //
 
 import Combine
+import Factory
 import Foundation
 
 class CityListViewModel: ObservableObject {
+
     @Published var cities: [City] = []
 
-    init(cityRepository: CityRepository = .shared) {
-        self.cityRepository = cityRepository
+    @Injected(\.cityRepository) private var cityRepository
 
+    init() {
         setupSubscriptions()
     }
 
@@ -28,7 +30,6 @@ class CityListViewModel: ObservableObject {
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let cityRepository: CityRepository
 }
 
 // MARK: - Private

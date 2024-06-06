@@ -6,19 +6,21 @@
 //
 
 import Combine
+import Factory
 import Foundation
 
 @MainActor
 final class WeatherViewModel: ObservableObject {
+
     @Published var isShowingError = false
     @Published var errorMessage: String?
     @Published var cities: [City] = []
     @Published var isShowingCityListView = false
     @Published var page = 0
 
-    init(cityRepository: CityRepository = .shared) {
-        self.cityRepository = cityRepository
+    @Injected(\.cityRepository) private var cityRepository
 
+    init() {
         setupSubscriptions()
     }
 
@@ -27,7 +29,6 @@ final class WeatherViewModel: ObservableObject {
     }
 
     private var disposeBag = Set<AnyCancellable>()
-    private let cityRepository: CityRepository
 }
 
 // MARK: - Private
