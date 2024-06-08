@@ -39,12 +39,15 @@ struct NewCityView : View {
             }
             .scrollContentBackground(.hidden)
             .disabled(viewModel.isValidating)
-            .navigationBarTitle(Text("Add City"))
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationTitle("Add City")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: cancelButton)
             .listStyle(GroupedListStyle())
+            .foregroundColor(.white)
         }
     }
-    
+
     private var cancelButton: some View {
         Button(action: {
             presentationMode.wrappedValue.dismiss()

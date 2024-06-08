@@ -35,7 +35,10 @@ struct CityListView : View {
             }
             .scrollContentBackground(.hidden)
             .navigationBarItems(leading: EditButton(), trailing: addButton)
-            .navigationBarTitle(Text("Weather"))
+            .navigationTitle("Weather")
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .foregroundColor(.white)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
