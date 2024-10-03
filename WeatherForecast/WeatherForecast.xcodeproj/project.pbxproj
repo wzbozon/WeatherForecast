@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CAFFE5F2CAF07FC00B94792 /* Codex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAFFE5E2CAF07FC00B94792 /* Codex.swift */; };
 		3CD7C73E2C11C5DD005FBBDE /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD7C73D2C11C5DD005FBBDE /* Factory */; };
 		3CD7C7412C11C623005FBBDE /* Container+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD7C7402C11C623005FBBDE /* Container+Extension.swift */; };
 		9215FAE429B447AB00B86A2A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9215FAE329B447AB00B86A2A /* Colors.xcassets */; };
@@ -98,7 +97,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3CAFFE5E2CAF07FC00B94792 /* Codex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codex.swift; sourceTree = "<group>"; };
 		3CD7C7402C11C623005FBBDE /* Container+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Extension.swift"; sourceTree = "<group>"; };
 		9215FAE329B447AB00B86A2A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9215FAE629B447FA00B86A2A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 				FC8EF1E429F6CCB9006F35E0 /* UserDefault.swift */,
 				FC8EF1E629F6CCD9006F35E0 /* UDKey.swift */,
 				FC86C38E29FA833F00B48A57 /* PageControl.swift */,
-				3CAFFE5E2CAF07FC00B94792 /* Codex.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -632,7 +629,6 @@
 				FC8EEF6629F4217F006F35E0 /* ServerEnvironment.swift in Sources */,
 				FC8EF34129F820B8006F35E0 /* Persistence.swift in Sources */,
 				FC8EEF7E29F42CB8006F35E0 /* ErrorPopup.swift in Sources */,
-				3CAFFE5F2CAF07FC00B94792 /* Codex.swift in Sources */,
 				FC8EEF7029F422D1006F35E0 /* DecodingError+Extension.swift in Sources */,
 				FC8EEF6829F42226006F35E0 /* RequestError.swift in Sources */,
 				FC8EEF9629F51F32006F35E0 /* DateFormatter+Extension.swift in Sources */,
