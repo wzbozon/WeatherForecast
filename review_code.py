@@ -12,6 +12,9 @@ repo_name = os.getenv("GITHUB_REPOSITORY").split("/")[1]
 pr_number = os.getenv("GITHUB_REF").split("/")[2]
 token = os.getenv("GITHUB_TOKEN")
 
+if not token:
+    raise ValueError("GITHUB_TOKEN environment variable is not set")
+
 logging.info(f"Repository Owner: {repo_owner}")
 logging.info(f"Repository Name: {repo_name}")
 logging.info(f"Pull Request Number: {pr_number}")
@@ -21,6 +24,11 @@ headers = {"Authorization": f"token {token}"}
 diff_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/pulls/{pr_number}"
 logging.info(f"Fetching PR diff from URL: {diff_url}")
 diff_response = requests.get(diff_url, headers=headers)
+
+if diff_response.status_code != 200:
+    logging.error(f"Failed to fetch PR diff: {diff_response.status_code} - {diff_response.text}")
+    raise SystemExit(f"Failed to fetch PR diff: {diff_response.status_code} - {diff_response.text}")
+
 diff = diff_response.text
 logging.info("Fetched PR diff")
 logging.info(f"PR Diff: {diff}")
@@ -31,11 +39,13 @@ client = OpenAI(
 )
 logging.info("Calling Codex API for code review")
 
+prompt = f"Please review the following Swift code for best practices, potential bugs, and improvements. Focus on areas such as code clarity, performance optimization, and adherence to Swift language conventions:\n\n{diff}"
+
 response = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": diff,
+            "content": prompt,
         }
     ],
     model="gpt-3.5-turbo",
@@ -55,3 +65,5 @@ try:
     logging.info("Posted comment to PR")
 except requests.exceptions.RequestException as e:
     logging.error(f"Failed to post comment: {e}")
+    logging.error(f"Response status code: {response.status_code}")
+    logging.error(f"Response text: {response.text}")
