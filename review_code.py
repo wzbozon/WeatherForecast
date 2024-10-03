@@ -20,7 +20,7 @@ logging.info(f"Repository Name: {repo_name}")
 logging.info(f"Pull Request Number: {pr_number}")
 
 # Fetch PR diff
-headers = {"Authorization": f"token {token}"}
+headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3.diff"}
 diff_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/pulls/{pr_number}"
 logging.info(f"Fetching PR diff from URL: {diff_url}")
 diff_response = requests.get(diff_url, headers=headers)
@@ -39,7 +39,7 @@ client = OpenAI(
 )
 logging.info("Calling Codex API for code review")
 
-prompt = f"Please review the following Swift code for best practices, potential bugs, and improvements. Focus on areas such as code clarity, performance optimization, and adherence to Swift language conventions:\n\n{diff}"
+prompt = f"Provide a Code Review focusing on potential crashes and code clarity for the following diff:\n\n{diff}"
 
 response = client.chat.completions.create(
     messages=[
@@ -56,7 +56,7 @@ logging.info(f"Response: {response.choices[0].message.content.strip()}")
 # Post Codex feedback to the PR as a comment
 comment_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/issues/{pr_number}/comments"
 comment = {
-    "body": f"AI Code Review:\n{response.choices[0].message.content.strip()}"
+    "body": f"{response.choices[0].message.content.strip()}"
 }
 logging.info(f"Posting comment to URL: {comment_url}")
 try:
