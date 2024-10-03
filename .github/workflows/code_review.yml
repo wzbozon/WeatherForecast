@@ -1,0 +1,18 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  codex-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Codex for Code Review
+        run: |
+          python review_code.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
