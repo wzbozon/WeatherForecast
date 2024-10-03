@@ -7,14 +7,14 @@
    <FileRef
       location = "group:LICENSE">
    </FileRef>
+   <FileRef
+      location = "group:review_code.py">
+   </FileRef>
    <Group
       location = "group:.github/workflows"
       name = "workflows">
       <FileRef
          location = "group:code_review.yml">
-      </FileRef>
-      <FileRef
-         location = "group:review_code.py">
       </FileRef>
    </Group>
    <Group
