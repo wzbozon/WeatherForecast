@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C908BD82CE369A000EDB822 /* CityCompletionResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C908BD72CE3699E00EDB822 /* CityCompletionResponseTests.swift */; };
 		3CAFFE612CAF170800B94792 /* Foo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAFFE602CAF170800B94792 /* Foo.swift */; };
 		3CD7C73E2C11C5DD005FBBDE /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD7C73D2C11C5DD005FBBDE /* Factory */; };
 		3CD7C7412C11C623005FBBDE /* Container+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD7C7402C11C623005FBBDE /* Container+Extension.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C908BD72CE3699E00EDB822 /* CityCompletionResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCompletionResponseTests.swift; sourceTree = "<group>"; };
 		3CAFFE602CAF170800B94792 /* Foo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foo.swift; sourceTree = "<group>"; };
 		3CD7C7402C11C623005FBBDE /* Container+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Extension.swift"; sourceTree = "<group>"; };
 		9215FAE329B447AB00B86A2A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -219,6 +221,14 @@
 				FC8EEF9F29F56EE7006F35E0 /* CityAutocompleteRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		3C908BD62CE3699000EDB822 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C908BD72CE3699E00EDB822 /* CityCompletionResponseTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3CD7C73F2C11C5FB005FBBDE /* DIContainer */ = {
@@ -439,6 +449,7 @@
 		FCAA815829AB5B41000E9860 /* WeatherForecastTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C908BD62CE3699000EDB822 /* Model */,
 				FCAA815929AB5B41000E9860 /* WeatherForecastTests.swift */,
 			);
 			path = WeatherForecastTests;
@@ -663,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCAA815A29AB5B41000E9860 /* WeatherForecastTests.swift in Sources */,
+				3C908BD82CE369A000EDB822 /* CityCompletionResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
